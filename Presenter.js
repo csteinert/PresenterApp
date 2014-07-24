@@ -4,7 +4,7 @@ var myDataRef = new Firebase('https://atndemo1.firebaseio.com/');
 $(document).ready(function () {
     $.getJSON('Questions.json', function (json) {
         $.each(json, function () {
-            $("#section-questions").append("<button id='question" + this.id + "' data-id=" + this.id + ">" + this.id + " - " + this.question + "</button>");
+            $("#section-questions").append("<button id='question" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
             $('#question' + this.id).click(function () {
                 //alert($(this).data("id"));
             });
