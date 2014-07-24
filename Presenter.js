@@ -12,7 +12,7 @@ $(document).ready(function () {
             $("#section-question-info").append(blah);
         });
 
-        var myDataRef = new Firebase('https://opl9mlhj485.firebaseio-demo.com/');
+        var myDataRef = new Firebase('https://atndemo1.firebaseio.com/AudienceQuestions/');
         $('#messageInput').keypress(function (e) {
             if (e.keyCode == 13) {
                 var name = $('#nameInput').val();
@@ -30,7 +30,7 @@ $(document).ready(function () {
             $('#messagesDiv').append('<article id="article' + removeKey +'"><p id="message' + removeKey + '">' + name + ':' + text + '</p></article>');
             $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
             $('#message' + removeKey).click(function () {
-                var votesRef = new Firebase("https://opl9mlhj485.firebaseio-demo.com/" + removeKey);
+                var votesRef = new Firebase("https://atndemo1.firebaseio.com/AudienceQuestions/" + removeKey);
                 votesRef.remove();
                 $("#article" + removeKey).remove();
             });
