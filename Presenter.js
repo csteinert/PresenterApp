@@ -3,16 +3,27 @@ var myDataRef = new Firebase('https://atndemo1.firebaseio.com/');
 
 $(document).ready(function () {
     $.getJSON('Questions.json', function (json) {
+        var myDataRef = new Firebase('https://atndemo1.firebaseio.com/AudienceQuestions/');
+        var selectedQuestionRef = new Firebase('https://atndemo1.firebaseio.com/SelectedQuestion/');
         $.each(json, function () {
             $("#section-questions").append("<button id='question" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
             $('#question' + this.id).click(function () {
-                //alert($(this).data("id"));
+                selectedQuestionRef.remove();
+                selectedQuestionRef.push({ id: this.id });
             });
-            var blah = QuestionInfoTemplate(this);
-            $("#section-question-info").append(blah);
+            $("#section-question-info").append(QuestionInfoTemplate(this));
         });
 
-        var myDataRef = new Firebase('https://atndemo1.firebaseio.com/AudienceQuestions/');
+        $("#button-blank").click(function() {
+            selectedQuestionRef.remove();
+            selectedQuestionRef.push({ id: "blank" });
+        });
+
+        $("#button-qa").click(function () {
+            selectedQuestionRef.remove();
+            selectedQuestionRef.push({ id: "qa" });
+        });
+
         $('#messageInput').keypress(function (e) {
             if (e.keyCode == 13) {
                 var name = $('#nameInput').val();
@@ -27,7 +38,7 @@ $(document).ready(function () {
             displayChatMessage(message.name, message.text, removeKey);
         });
         function displayChatMessage(name, text, removeKey) {
-            $('#messagesDiv').append('<article id="article' + removeKey +'"><p id="message' + removeKey + '">' + '<strong>' + name + ' asks:</strong>  ' + text + '</p></article>');
+            $('#messagesDiv').append('<article id="article' + removeKey + '"><p id="message' + removeKey + '">' + '<strong>' + name + ' asks:</strong>  ' + text + '</p></article>');
             $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
             $('#message' + removeKey).click(function () {
                 var votesRef = new Firebase("https://atndemo1.firebaseio.com/AudienceQuestions/" + removeKey);
@@ -48,7 +59,7 @@ $(document).ready(function () {
             + "<ol>"
             + answersInfo
             + "</ol>"
-            +"</article>";
+            + "</article>";
     }
 
 });
