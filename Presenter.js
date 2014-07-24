@@ -27,12 +27,12 @@ $(document).ready(function () {
             displayChatMessage(message.name, message.text, removeKey);
         });
         function displayChatMessage(name, text, removeKey) {
-            $('#messagesDiv').append('<div id="div' + removeKey +'"><a href="#" id="message' + removeKey + '">' + name + ':' + text + '</a></div');
+            $('#messagesDiv').append('<article id="article' + removeKey +'"><p id="message' + removeKey + '">' + name + ':' + text + '</p></article>');
             $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
             $('#message' + removeKey).click(function () {
                 var votesRef = new Firebase("https://opl9mlhj485.firebaseio-demo.com/" + removeKey);
                 votesRef.remove();
-                $("#div" + removeKey).remove();
+                $("#article" + removeKey).remove();
             });
         };
     });
