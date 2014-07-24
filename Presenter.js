@@ -8,11 +8,25 @@ $(document).ready(function () {
             $('#question' + this.id).click(function () {
                 //alert($(this).data("id"));
             });
-            $("#section-question-info").append("<article>" + this.question + "</article>");
+            var blah = QuestionInfoTemplate(this);
+            $("#section-question-info").append(blah);
         });
     });
-    
-    
+
+    function QuestionInfoTemplate(questionInfo) {
+        var answersInfo = "";
+        $.each(questionInfo.answers, function () {
+            answersInfo += "<li>" + this + "</li>"
+        });
+        return "<article><h2>"
+            + questionInfo.question
+            + "</h2>"
+            + "<ol>"
+            + answersInfo
+            + "</ol>"
+            +"</article>";
+    }
+
 });
 
 //$('#messageInput').keypress(function (e) {
