@@ -23,11 +23,17 @@ $(document).ready(function () {
         });
         myDataRef.on('child_added', function (snapshot) {
             var message = snapshot.val();
-            displayChatMessage(message.name, message.text);
+            var removeKey = snapshot.kc.path.n;
+            displayChatMessage(message.name, message.text, removeKey);
         });
-        function displayChatMessage(name, text) {
-            $('<div/>').text(text).prepend($('<em/>').text(name + ': ')).appendTo($('#messagesDiv'));
+        function displayChatMessage(name, text, removeKey) {
+            $('#messagesDiv').append('<div id="div' + removeKey +'"><a href="#" id="message' + removeKey + '">' + name + ':' + text + '</a></div');
             $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+            $('#message' + removeKey).click(function () {
+                var votesRef = new Firebase("https://opl9mlhj485.firebaseio-demo.com/" + removeKey);
+                votesRef.remove();
+                $("#div" + removeKey).remove();
+            });
         };
     });
 
