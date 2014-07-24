@@ -18,9 +18,9 @@ $(document).ready(function () {
         $.each(questionInfo.answers, function () {
             answersInfo += "<li>" + this + "</li>"
         });
-        return "<article><h2>"
+        return "<article><h3>"
             + questionInfo.question
-            + "</h2>"
+            + "</h3>"
             + "<ol>"
             + answersInfo
             + "</ol>"
