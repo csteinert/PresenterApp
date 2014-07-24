@@ -6,10 +6,11 @@ $(document).ready(function () {
         var myDataRef = new Firebase('https://atndemo1.firebaseio.com/AudienceQuestions/');
         var selectedQuestionRef = new Firebase('https://atndemo1.firebaseio.com/SelectedQuestion/');
         $.each(json, function () {
-            $("#section-questions").append("<button id='question" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
+            $("#section-questions").append("<button class='question-button' id='question" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
             $('#question' + this.id).click(function () {
                 selectedQuestionRef.remove();
                 selectedQuestionRef.push({ id: this.id });
+                SelectButton(this);
             });
             $("#section-question-info").append(QuestionInfoTemplate(this));
         });
@@ -17,11 +18,13 @@ $(document).ready(function () {
         $("#button-blank").click(function() {
             selectedQuestionRef.remove();
             selectedQuestionRef.push({ id: "blank" });
+            SelectButton(this);
         });
 
         $("#button-qa").click(function () {
             selectedQuestionRef.remove();
             selectedQuestionRef.push({ id: "qa" });
+            SelectButton(this);
         });
 
         $('#messageInput').keypress(function (e) {
@@ -47,6 +50,11 @@ $(document).ready(function () {
             });
         };
     });
+
+    function SelectButton(selector){
+        $(".question-button").removeClass('current-slide');
+        $(selector).addClass('current-slide');
+    }
 
     function QuestionInfoTemplate(questionInfo) {
         var answersInfo = "";
