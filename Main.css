@@ -5,6 +5,22 @@
 
 button {
 	display: block;
+	width: 90%;
+	padding: 10px;
+	text-align: left;
+	border: 0 solid;
+	margin-bottom: 10px;
+}
+
+h2 {
+	background: #555;
+	margin: 0 0 20px;
+	padding: 10px 20px;
+	color: #fff;
+}
+
+h3 {
+	margin-top: 0;
 }
 
 section {
@@ -16,7 +32,7 @@ section {
 		border-left: 1px solid #eee;
 	}
 
-	section > * {
+	section > *:not(:first-child) {
 		margin-left: 20px;
 	}
 
