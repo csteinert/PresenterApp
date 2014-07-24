@@ -1,4 +1,21 @@
-﻿button
-{
+﻿body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
 	display: block;
 }
+
+section {
+	width: 33%;
+	float: left;
+}
+
+	section + section {
+		border-left: 1px solid #eee;
+	}
+
+	section > * {
+		margin-left: 20px;
+	}

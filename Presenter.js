@@ -8,6 +8,7 @@ $(document).ready(function () {
             $('#question' + this.id).click(function () {
                 //alert($(this).data("id"));
             });
+            $("#section-question-info").append("<article>" + this.question + "</article>");
         });
     });
     
