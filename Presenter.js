@@ -27,7 +27,7 @@ $(document).ready(function () {
             displayChatMessage(message.name, message.text, removeKey);
         });
         function displayChatMessage(name, text, removeKey) {
-            $('#messagesDiv').append('<article id="article' + removeKey +'"><p id="message' + removeKey + '">' + name + ':' + text + '</p></article>');
+            $('#messagesDiv').append('<article id="article' + removeKey +'"><p id="message' + removeKey + '">' + '<strong>' + name + ' asks:</strong>  ' + text + '</p></article>');
             $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
             $('#message' + removeKey).click(function () {
                 var votesRef = new Firebase("https://atndemo1.firebaseio.com/AudienceQuestions/" + removeKey);

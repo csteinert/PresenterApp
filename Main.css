@@ -10,6 +10,7 @@ button {
 	text-align: left;
 	border: 0 solid;
 	margin-bottom: 10px;
+	background: #eee;
 }
 
 h2 {
@@ -21,6 +22,11 @@ h2 {
 
 h3 {
 	margin-top: 0;
+}
+
+p {
+	margin: 0;
+	padding: 20px;
 }
 
 section {
@@ -36,9 +42,42 @@ section {
 		margin-left: 20px;
 	}
 
+article {
+	border-bottom: 1px dotted #eee;
+	margin-right: 20px;
+}
+
 #section-question-info article {
 	padding-top: 20px;
 	padding-bottom: 20px;
-	margin-right: 20px;
-	border-bottom: 1px dotted #eee;
+}
+
+#section-questions-answers strong {
+	display: block;
+}
+
+#section-questions-answers p { position: relative; }
+
+#section-questions-answers p:hover {
+	cursor: pointer;
+	background: #eee;
+}
+
+#section-questions-answers p:after {
+	content: "+";
+	font-size: 250%;
+	position: absolute;
+	right: 10px;
+	top: 0;
+	color: #fff;
+	/* Safari */
+	-webkit-transform: rotate(-45deg);
+	/* Firefox */
+	-moz-transform: rotate(-45deg);
+	/* IE */
+	-ms-transform: rotate(-45deg);
+	/* Opera */
+	-o-transform: rotate(-45deg);
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
