@@ -9,7 +9,7 @@ $(document).ready(function () {
             $("#section-questions").append("<button class='question-button' id='question" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
             $('#question' + this.id).click(function () {
                 selectedQuestionRef.remove();
-                selectedQuestionRef.push({ id: this.id });
+                selectedQuestionRef.push({ id: $(this).data("id") });
                 SelectButton(this);
             });
             $("#section-question-info").append(QuestionInfoTemplate(this));
