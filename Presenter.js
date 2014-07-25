@@ -1,90 +1,56 @@
-// JavaScript source code
-var myDataRef = new Firebase('https://atndemo1.firebaseio.com/');
+var connectionString = "https://atndemo1.firebaseio.com/";
+var audianceQuestionsRef = new Firebase(connectionString + "AudienceQuestions/");
+var selectedSlideRef = new Firebase(connectionString + "SelectedSlide/");
 
 $(document).ready(function () {
-    $.getJSON('Questions.json', function (json) {
-        var myDataRef = new Firebase('https://atndemo1.firebaseio.com/AudienceQuestions/');
-        var selectedQuestionRef = new Firebase('https://atndemo1.firebaseio.com/SelectedQuestion/');
+    $.getJSON("Questions.json", function (json) {
         $.each(json, function () {
-            $("#section-questions").append("<button class='question-button' id='question" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
-            $('#question' + this.id).click(function () {
-                selectedQuestionRef.remove();
-                selectedQuestionRef.push({ id: $(this).data("id") });
-                SelectButton(this);
-            });
-            $("#section-question-info").append(QuestionInfoTemplate(this));
+            $("#section-slides").append("<button class='slide-button' id='slide_" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
+            $("#section-questions").append(questionTemplate(this));
         });
-
-        $("#button-blank").click(function() {
-            selectedQuestionRef.remove();
-            selectedQuestionRef.push({ id: "blank" });
-            SelectButton(this);
-        });
-
-        $("#button-qa").click(function () {
-            selectedQuestionRef.remove();
-            selectedQuestionRef.push({ id: "qa" });
-            SelectButton(this);
-        });
-
-        $('#messageInput').keypress(function (e) {
-            if (e.keyCode == 13) {
-                var name = $('#nameInput').val();
-                var text = $('#messageInput').val();
-                myDataRef.push({ name: name, text: text });
-                $('#messageInput').val('');
-            }
-        });
-        myDataRef.on('child_added', function (snapshot) {
-            var message = snapshot.val();
-            var removeKey = snapshot.kc.path.n;
-            displayChatMessage(message.name, message.text, removeKey);
-        });
-        function displayChatMessage(name, text, removeKey) {
-            $('#messagesDiv').append('<article id="article' + removeKey + '"><p id="message' + removeKey + '">' + '<strong>' + name + ' asks:</strong>  ' + text + '</p></article>');
-            $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-            $('#message' + removeKey).click(function () {
-                var votesRef = new Firebase("https://atndemo1.firebaseio.com/AudienceQuestions/" + removeKey);
-                votesRef.remove();
-                $("#article" + removeKey).remove();
-            });
-        };
     });
 
-    function SelectButton(selector){
-        $(".question-button").removeClass('current-slide');
-        $(selector).addClass('current-slide');
-    }
+    $(".slide-button").click(function () {
+        selectSlide(this);
+    });
 
-    function QuestionInfoTemplate(questionInfo) {
-        var answersInfo = "";
-        $.each(questionInfo.answers, function () {
-            answersInfo += "<li>" + this + "</li>"
-        });
-        return "<article><h3>"
-            + questionInfo.question
-            + "</h3>"
-            + "<ol>"
-            + answersInfo
-            + "</ol>"
-            + "</article>";
-    }
+    $("#messageInput").keypress(function (e) {
+        if (e.keyCode == 13) {
+            var name = $("#nameInput").val();
+            var text = $("#messageInput").val();
+            audianceQuestionsRef.push({ name: name, text: text });
+            $("#messageInput").val("");
+        }
+    });
 
+    audianceQuestionsRef.on("child_added", function (snapshot) {
+        var message = snapshot.val();
+        var removeKey = snapshot.kc.path.n[1];
+        displayChatMessage(message.name, message.text, removeKey);
+    });
 });
 
-//$('#messageInput').keypress(function (e) {
-//    if (e.keyCode == 13) {
-//        var name = $('#nameInput').val();
-//        var text = $('#messageInput').val();
-//        myDataRef.push({ name: name, text: text });
-//        $('#messageInput').val('');
-//    }
-//});
-//myDataRef.on('child_added', function (snapshot) {
-//    var message = snapshot.val();
-//    displayChatMessage(message.name, message.text);
-//});
-//function displayChatMessage(name, text) {
-//    $('<div/>').text(text).prepend($('<em/>').text(name + ': ')).appendTo($('#messagesDiv'));
-//    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-//};
+function displayChatMessage(name, text, removeKey) {
+    $("#messagesDiv").append('<article id="article' + removeKey + '"><p id="message' + removeKey + '">' + '<strong>' + name + ' asks:</strong>  ' + text + '</p></article>');
+    $("#messagesDiv")[0].scrollTop = $("#messagesDiv")[0].scrollHeight;
+    $("#message" + removeKey).click(function () {
+        var votesRef = new Firebase(connectionString + "AudienceQuestions/" + removeKey);
+        votesRef.remove();
+        $("#article" + removeKey).remove();
+    });
+}
+
+function selectSlide(selector) {
+    selectedSlideRef.remove();
+    selectedSlideRef.push({ id: $(selector).data("id") });
+    $(".slide-button").removeClass("current-slide");
+    $(selector).addClass("current-slide");
+}
+
+function questionTemplate(question) {
+    var answers = "";
+    $.each(question.answers, function () {
+        answers += "<li>" + this + "</li>"
+    });
+    return "<article><h3>" + question.question + "</h3><ol>" + answers + "</ol></article>";
+}

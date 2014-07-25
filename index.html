@@ -1,25 +1,25 @@
 <html>
-<head>
-    <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-    <script src="Presenter.js"></script>
-    <link rel="stylesheet" href="Main.css">
-    <title>Presenter View</title>
-</head>
-<body>
-    <section id="section-questions">
-        <h2>Slides</h2>
-        <button id='button-blank' class="question-button">Blank Slide</button>
-        <button id='button-qa' class="question-button">Q & A</button>
-    </section>
-    <section id="section-question-info">
-        <h2>Questions</h2>
-    </section>
-    <section id="section-questions-answers">
-        <h2>Q & A</h2>
-        <div id='messagesDiv'></div>
-        <input type='text' id='nameInput' placeholder='Name'>
-        <input type='text' id='messageInput' placeholder='Message'>
-    </section>
-</body>
+    <head>
+        <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+        <script src="Presenter.js"></script>
+        <link rel="stylesheet" href="Main.css">
+        <title>Presenter View</title>
+    </head>
+    <body>
+        <section id="section-slides">
+            <h2>Slides</h2>
+            <button id='slide_blank' class="slide-button" data-id="blank">Blank Slide</button>
+            <button id='slide_qa' class="slide-button" data-id="qa">Q & A</button>
+        </section>
+        <section id="section-questions">
+            <h2>Questions</h2>
+        </section>
+        <section id="section-questions-answers">
+            <h2>Q & A</h2>
+            <div id='messagesDiv'></div>
+            <input type='text' id='nameInput' placeholder='Name'>
+            <input type='text' id='messageInput' placeholder='Message'>
+        </section>
+    </body>
 </html>
