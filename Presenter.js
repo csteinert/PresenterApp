@@ -7,11 +7,11 @@ $(document).ready(function () {
         $.each(json, function () {
             $("#section-slides").append("<button class='slide-button' id='slide_" + this.id + "' data-id=" + this.id + ">" + this.id + ".  " + this.question + "</button>");
             $("#section-questions").append(questionTemplate(this));
-        });    
-		
-		$(".slide-button").click(function () {
-			selectSlide(this);
-		});
+        });
+
+        $(".slide-button").click(function () {
+            selectSlide(this);
+        });
     });
 
     $("#messageInput").keypress(function (e) {
