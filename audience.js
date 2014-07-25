@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var myDataRef = new Firebase('https://atndemo1.firebaseio.com/SelectedQuestion/');
+    var myDataRef = new Firebase('https://atndemo1.firebaseio.com/SelectedSlide/');
     myDataRef.on('child_added', function (snapshot) {
         var message = snapshot.val();
         updateQuestion(message.id);
