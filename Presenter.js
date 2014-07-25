@@ -27,14 +27,30 @@ $(document).ready(function () {
             SelectButton(this);
         });
 
-		$(".question-button").click(function(){
-			alert("Foo");
-			selectedQuestionRef.push({ whichEvent: 'Foo', text: 'Just some text about nothing'});
-		});
 		
-		selectedQuestionRef.on('child_added', function(snapshot) {
-			//We'll fill this in later.
-		});
+		
+		
+		
+		
+		
+		
+		//$(".question-button").click(function(){
+		//	alert("Foo");
+		//	selectedQuestionRef.push({ whichEvent: 'Foo', text: 'Just some text about nothing'});
+		//});
+		
+		//selectedQuestionRef.on('child_added', function(snapshot) {
+		//	//We'll fill this in later.
+		//});
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
         $('#messageInput').keypress(function (e) {
             if (e.keyCode == 13) {
