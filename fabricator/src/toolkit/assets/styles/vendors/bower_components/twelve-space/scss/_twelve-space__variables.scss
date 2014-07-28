@@ -1,0 +1,26 @@
+// Twelve-Space Variables
+
+$twelve-space--block-name: "space"; // "space" in `.space--12`
+$twelve-space--block__separator-chars: "__";
+$twelve-space--block__element-name: "cell"; // "cell" in `.space__cell`
+$twelve-space--block__separator--modifier-chars: "--";
+
+$twelve-space--selectors__output: false; // Output all selectors, if `false` only %placeholder selector's are available
+$twelve-space--helper-classes__output: false; // Master include helper classes, if `false` only %placeholder selector's are available
+
+$twelve-space--helper-class-group--floats__output: false; // Output of "Float Options", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--displays__output: false; // Output of "Display Types", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--positions__output: false; // Output of "Position Types", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--z-index__output: false; // Output of "Z-index Options", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--overflow__output: false; // Output of "Overflow Options", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--alignment__output: false; // Output of "Alignment Options", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--text-alignment__output: false; // Output of "Text Horizontal Alignment Types", if `false` only %placeholder selector's are available
+$twelve-space--helper-class-group--widths__output: false; // Output of "Width Options", if `false` only %placeholder selector's are available
+
+$twelve-space--selectors-group--gap: false; // Output of "Gaps", if `false` only %placeholder selector's are available
+$twelve-space--selectors-group--expand: false; // Out of "Expands"
+$twelve-space--selectors-group--offset: false; // Out of "Offsets"
+$twelve-space--selectors-group--table: false; // Out of "Table Setups"
+$twelve-space--selectors-group--equal: false; // Out of "Equal Columns"
+
+$twelve-space--max-spaces: 12; // The quantity of unit spaces to be made

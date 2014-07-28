@@ -1,0 +1,407 @@
+%vertical-align-header {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	@media (max-width: 740px) {
+		position: relative;
+		top: auto;
+		transform: none;
+	}
+}
+
+.header__vertical {
+	position: relative;
+	transform: translateY(50%);
+}
+
+
+/* 
+ * Header
+ */
+
+ .header__logo {
+	width: percentage(134px / (($default-space * 2) + $max-width));
+}
+
+.header {
+	@extend %clear-after-ph;
+
+	position: relative;
+	z-index: 201;
+	padding-bottom: 3px;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	background-color: $green-alt;
+
+	&:before {
+		position: absolute;
+		bottom: 0px;
+		left: -10%;
+		width: 120%;
+		height: 2px;
+		background-color: #298C07;
+		content: "";
+	}
+
+	.nav-item__img {
+	 	margin-right: 10px;
+
+	 	& + li {
+			&:before {
+				display: none;
+			}
+	 	}
+
+	}
+
+	.nav-item--brackets, .ms-core-listMenu-horizontalBox {
+		display: block;
+		font-size: 15px;
+
+		> li {
+			&:first-child {
+				transform: translateY(0);
+			}
+		}
+			
+		@media (max-width: 1000px) {
+			font-size: 11px;
+		}
+	}
+
+
+	.nav-item__sub-child {
+		min-width: 150px;
+		border-bottom: 2px solid $green-dark;
+		background-color: $green-alt;
+	}
+	
+	.search-module, #DeltaPlaceHolderSearchArea {
+		@extend %vertical-align-header;
+
+		right: 0;
+		width: 200px;
+
+		@media (max-width: 800px) {
+			right: 10px;
+			width: 140px;
+			
+			.ms-srch-sb-searchLink {
+				right: 4px;
+			}
+		}
+	}
+
+	#DeltaPlaceHolderSearchArea {
+		overflow: hidden;
+
+		input {
+			width: 100%;
+			color: rgba(255,255,255,.8);
+			
+			&:focus, &:active {
+				//font-size: 16px;
+				line-height: 1;
+			}
+		}
+	}
+
+
+	.ms-srch-sb > input,  {
+		height: auto !important;
+	}
+
+
+	.ms-core-listMenu-horizontalBox  {
+		padding-left: 20px; // offset due to the global gutter
+	}
+
+	.ms-core-listMenu-root {
+		@extend %vertical-align-header;
+
+		left: percentage(124px / $max-width);
+	}
+
+}
+
+.header__wrap {
+	@extend %container__base;
+
+	position: relative;
+
+	@media (max-width: ($default-space + $default-space--smaller + $max-width)) {
+		margin-right: $default-space--smaller;
+		margin-left: $default-space--smaller;
+	}
+}
+
+
+.header__toggle {
+
+	&:hover {
+		&:before {
+			background-color: $orange;
+			color: #FFF;
+		}
+	}
+
+	&.active  {
+		background-color: $orange;
+		color: #FFF;
+
+		
+		/*
+		@media (max-width: 740px) {
+			&:before {
+				content: "x";
+				line-height: 25px;
+			}
+		}
+		*/
+
+		& + div {
+			@include allChange; // show navigation
+		}
+	}
+
+}
+
+
+.header {
+	.header__toggle {
+
+		&.active  {
+			& ~ div { // show navigation
+				//@include allChange($duration: 350ms, $timing: ease-out, $delay: 1000ms);
+				
+				display: block !important;
+			}
+		}
+
+	}
+
+
+	ul.dynamic {
+		left: auto !important;
+		top: auto !important;
+		padding: 0 !important;
+		border-top: none !important;
+		box-shadow: none !important;
+	}
+
+	.ms-core-listMenu-horizontalBox .dynamic-children.additional-background {
+		padding-right: 0 !important;
+		background-image: none !important;
+	}
+}
+
+
+@media (max-width: 740px) {
+
+	body {
+		padding-top: 64px; // offset for fixed
+	}
+	
+	.header {
+		position: fixed;  // make fixed
+		top: 0;  // make fixed
+		left: 0;
+		padding-top: 10px;
+		padding-bottom: 8px;
+		width: 100%;  // make fixed
+
+		.ms-core-listMenu-horizontalBox {
+			position: absolute !important;
+			top: 51px;
+			z-index: -1;
+			display: none;
+			padding-left: 0;
+			width: 100%;
+			border-right: 2px solid #298C07;
+			border-bottom: 2px solid #298C07;
+			border-left: 2px solid #298C07;
+			background-color: $green-alt;
+			box-shadow: 0 2px 5px rgba(0,0,0,.5);
+			font-size: 14px;
+			transform: translateY(0) !important;
+
+			> ul, > ul > li {
+				border-top: 1px solid rgba(255,255,255,.2);
+				border-bottom: 1px solid rgba(0,0,0,.15);
+				marign-left: 0;
+				
+				&:first-child {
+					border-top: none;
+				}
+			}
+
+			> ul > li {
+				display: block;
+				float: none;
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+			a {
+				display: block;
+				padding: 10px 20px;
+			}
+		}
+
+		#DeltaPlaceHolderSearchArea {
+			right: 0;
+			width: auto;
+
+			input {
+				height: 44px !important;
+				//font-size: 10px;
+				font-size: 16px;
+			}
+
+			.ms-srch-sb {
+				display: block;
+			}
+		}
+
+
+		.ms-core-listMenu-root {
+			left: auto;
+		}
+
+		.dynamic-children ul {
+			position: relative;
+			display: none;
+			margin-top: 0;
+			width: 100%;
+			border-right: 0;
+			border-bottom: 0;
+			border-left: 0;
+
+			a {
+
+				&:before {
+					margin-right: .5em;
+					content: "• ";
+				}
+			}
+
+			&:hover {
+				ul {
+					display: none;
+				}
+			}
+		}
+
+		a.dynamic-children {
+			position: relative;
+
+			.menu-item-text {
+				&:before {
+					display: inline-block;
+					margin-right: 5px;
+					margin-left: -15px;
+					width: 10px;
+					text-align: center;
+					line-height: middle;
+					//background-color: #FFF;
+					//color: $green-alt;
+					content: "+";
+				}
+			}
+
+			&.active {
+
+				.menu-item-text {
+					&:before {
+						content: "–";
+					}
+				}
+
+				& + ul { //show sub nav
+					display: block !important;
+				}
+			}
+		}
+
+		.ms-core-listMenu-root {
+			> .dynamic-children {
+			
+				&:hover {
+					> ul {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.header__wrap {
+		@include clear-after;
+	}
+
+	.header__toggle {
+		display: inline-block;
+		float: left;
+		margin-top: 4px;
+		height: 35px;
+
+		&:before {
+			@include glyph;
+			@include allChange;
+
+			display: inline-block;
+			overflow: hidden;
+			width: 40px;
+			height: 34px;
+			background-color: #FFF;
+			box-shadow: 0 -1px 1px rgba(0,0,0,.18);
+			color: $green-alt;
+			content: "=";
+			text-align: center;
+			text-shadow: 0 -1px 1px rgba(0,0,0,.18);
+			font-size: 35px;
+			line-height: 36px;
+		}
+	}
+
+	.header__logo {
+		float: left;
+		margin-left: 10px;
+		width: 70px;
+		height: 40px;
+		outline: none;
+
+		.nav-item__img {
+			padding: 0;
+			border: 0;
+			background-color: transparent !important;
+		}
+
+	}
+
+	.search-module__button, .ms-srch-sb .ms-srch-sb-searchLink  {
+		
+		&:after {
+			line-height: 1.4;
+		}
+	}
+}
+
+
+/**
+ * Hide search for "mobile"
+ * This is because search result pages are not responsive
+ * To make the search/header be fully responsive, remove `.header-search--alt` from `.header`
+ */
+
+@media (max-width: 460px) {
+	.header-search--alt {
+		.ms-srch-sb {
+			display: none !important;
+		}
+	}
+}
+
+
+

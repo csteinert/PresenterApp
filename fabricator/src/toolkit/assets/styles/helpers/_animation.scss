@@ -1,0 +1,74 @@
+/* 
+ * Animation Transitions 
+ */
+
+%transition__base {
+	transition-duration: 300ms;
+	transition-timing-function: ease-in-out;
+	transition-delay: 0;
+}
+
+%all--change, .all--change {
+	@extend %transition__base;
+	
+	transition-property: all;
+}
+
+
+%background-color--change, .background-color--change {
+	@extend %transition__base;
+	
+	transition-property: background-color;
+}
+
+%opacity--change, .opacity--change {
+	@extend %transition__base;
+	
+	transition-property: opacity;
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    color: rgba(0,0,0,0);
+    opacity: .25;
+  }
+  100% {
+    box-shadow: 0 1px 2px rgba(0,0,0,.25);
+    color: rgba(0,0,0,.5);
+    text-shadow: 0 1px 0  rgba(0,0,0,.9), 0 -1px 0 #FFF;
+    opacity: .5;
+  }
+}
+
+.fadeInUp {
+  @media (min-width: 461px) {
+    animation-name: fadeInUp;
+  }
+}

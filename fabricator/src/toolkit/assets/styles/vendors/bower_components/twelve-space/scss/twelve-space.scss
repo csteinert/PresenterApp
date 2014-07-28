@@ -1,0 +1,431 @@
+/*! ==========================================================================
+   Twelve-Space Structure System [v1.0.0]
+   ==========================================================================
+ * Created by Kevin Mack
+ * http://github.com/kevinmack18/Twelve-Space
+ * Modified Date: 2014-05-11
+ */
+
+@import "twelve-space__variables";
+@import "twelve-space__helper-classes";
+
+// Global functions
+@function ceilHundredths($numbers) {
+ 	$numbers: $numbers * 10000;
+
+	@if ($numbers < 1) {
+		$numbers: $numbers - 1;
+	} @else {
+		$numbers: $numbers + 1;
+	}
+
+	@return round($numbers)/ 100#{"%"};
+
+}
+
+// Block setup
+$blockDefault: ("%space");
+$block: if( $twelve-space--selectors__output,
+            ("#{$blockDefault}"),
+			$blockDefault );
+
+// Element setup
+$elementDefault: ("__cell");
+$element: if( $twelve-space--selectors__output,
+              ("#{$elementDefault}, &#{$twelve-space--block__separator-chars + $twelve-space--block__element-name}"),
+			  $elementDefault );
+
+
+%space--table-setup, %space--table, %space--table--#{$twelve-space--max-spaces}, %space--table__row {
+	@extend %display-table;
+	@extend %full;
+}
+
+
+// Framework main setup
+%space {
+	@extend %clear-after;
+
+	& > %space__cell {
+		@extend %every-other-float-opposite-setup;
+	} // space
+
+}
+
+%space--12 {
+	@extend %clear-after;
+
+	> %space__cell {
+		&:nth-child(odd) {
+			@extend %float-left;
+		}
+		&:nth-child(even) {
+			@extend %float-right;
+		}
+	}
+}
+
+
+%space__cell { // space__cell;
+}
+
+
+@for $i from 1 through $twelve-space--max-spaces {
+
+	%space__cell--#{$i}__width-setup {  // Shared width properties, space__cell--{#}__width-setup
+		width: percentage( $i / $twelve-space--max-spaces);
+	}
+
+	%space__cell--#{$i} {
+
+		@extend %float-left;
+		@extend %space__cell--#{$i}__width-setup; // space__cell--{#;}
+	}
+
+	@for $x from 1 through $twelve-space--max-spaces {
+
+		%space__cell--#{$i}__gap--left--#{$x} {
+			padding-left: percentage($x / $i); // space__cell--{#;}__gap--left--{#;}
+		}
+
+		%space__cell--#{$i}__gap--right--#{$x} {
+			padding-right: percentage($x / $i); // space__cell--{#;}__gap--right--{#;}
+		}
+
+		%space__cell--#{$i}__expand--#{$x} {
+			width: percentage( 1 + ($x / $i) ); // space__cell--{#;}__expand--{#;}
+		}
+
+		%space__cell--#{$i}__offset--#{$x} {
+			margin-right: percentage( -$x / $i ); // space__cell--{#;}--offset--{#;}
+		}
+
+		%space__cell--#{$i}__offset--negative--#{$x} {
+			margin-left: percentage( -$x / $i ); // space__cell--{#;}--offset--negative--{#;}
+		}
+
+	}
+
+}
+
+@for $x from 1 through $twelve-space--max-spaces {
+	%space__cell--offset--#{$x} {// space__cell--offset--{#}
+		margin-left: ceilHundredths( $x / $twelve-space--max-spaces );
+	}
+
+	%space__cell--offset--negative--#{$x} {
+		margin-left: ceilHundredths( -$x / $twelve-space--max-spaces );
+	}
+}
+
+%space__gap--right { // .space__gap--right
+	margin-right: percentage(1 / $twelve-space--max-spaces);
+}
+
+%space__gap--left { // .space__gap--left
+	margin-left: percentage(1 / $twelve-space--max-spaces);
+}
+
+%space__gap--padding--right { // space__gap--padding--right
+
+	padding-right: percentage(1 / $twelve-space--max-spaces);
+}
+
+%space__gap--padding--left { // space__gap--padding--left
+
+	padding-left: percentage(1 / $twelve-space--max-spaces);
+}
+
+@for $i from 1 through $twelve-space--max-spaces {
+
+	%space__gap--right--#{$i} { // .space__gap--right--{#;}
+
+		@if ($i == 1) {
+			@extend %space__gap--right;
+
+		} @else {
+			margin-right: percentage($i / $twelve-space--max-spaces);
+		}
+
+	}
+
+	%space__gap--left--#{$i} {  // .space__gap--left--{#;}
+
+		@if ($i == 1) {
+			@extend %space__gap--left;
+
+		} @else {
+			margin-left: percentage($i / $twelve-space--max-spaces);
+		}
+
+	}
+
+	%space__gap--padding--right--#{$i} { // space__gap--padding--right--{#;}
+
+		@if ($i == 1) {
+			@extend %space__gap--padding--right;
+
+		} @else {
+			padding-right: percentage($i / $twelve-space--max-spaces);
+		}
+
+	}
+
+	%space__gap--padding--left--#{$i} { // space__gap--padding--left--{#;}
+
+		@if ($i == 1) {
+			@extend %space__gap--padding--left;
+
+		} @else {
+			padding-left: percentage($i / $twelve-space--max-spaces);
+		}
+
+	}
+}
+
+%space--table {
+
+}
+
+%space--table__cell {
+	@extend %display-table-cell;
+}
+
+@for $i from 1 through $twelve-space--max-spaces {
+	%space--table__cell--#{$i} {
+		@extend %display-table-cell;
+		@extend %space__cell--#{$i}__width-setup;
+	}
+}
+
+%space__row {
+	@extend %clear-after;
+}
+
+// "Equal Columns" Setup
+%space--equal {
+
+}
+
+@for $i from 1 through $twelve-space--max-spaces {
+	%space--equal--#{$i} {
+
+		> %space__cell {
+
+			width: percentage( 1 / $i );
+
+			&:nth-child(#{$i}n+1) { // Clears on #nth-child+1 for even rows
+				@extend %clear;
+			} // .space--equal--{#} > .space__cell
+			@extend %float-left;
+		} // .space--equal--{#}
+
+		@extend %clear-after;
+	}
+}
+
+// Output default selectors if `$twelve-space--selectors__output` is true or $twelve-space__extend-selectors is used
+@mixin createOutput($block-name: $twelve-space--block-name, $separator-chars: $twelve-space--block__separator-chars, $element-name: $twelve-space--block__element-name, $modifier-chars: $twelve-space--block__separator--modifier-chars, $max-spaces: $twelve-space--max-spaces, $output: $twelve-space--selectors__output) {
+
+	@if ($output) {
+		$elementSelector: "."
+						  + $block-name
+						  + $separator-chars
+						  + $element-name;
+
+		.#{$block-name} {
+			@extend %space;
+
+			& > #{$elementSelector} {
+				@extend %space__cell;
+			} // space
+		}
+
+		.#{$block-name + $modifier-chars + $max-spaces} {
+			@extend %space--12;
+
+			> #{$elementSelector} {
+				@extend %space__cell;
+			}
+		}
+
+		.#{$block-name + $separator-chars + $element-name} { // space__cell;
+
+		}
+
+		@for $i from 1 through $max-spaces {
+
+			$space__cell: $block-name + $separator-chars + $element-name;
+
+			$space__cell--version: $space__cell + $modifier-chars + $i;
+
+			.#{$space__cell--version} {
+				@extend %space__cell--#{$i};  // space__cell--{#;}
+
+				//width: percentage( $i / $max-spaces);
+			}
+
+			@for $x from 1 through $max-spaces {
+
+				@if ($twelve-space--selectors__output and $twelve-space--selectors-group--gap) {
+					.#{$space__cell--version + $separator-chars}gap#{$modifier-chars}left#{$modifier-chars + $x} {
+						@extend %space__cell--#{$i}__gap--left--#{$x}; // space__cell--{#;}__gap--left--{#;}
+					}
+
+					.#{$space__cell--version + $separator-chars}gap#{$modifier-chars}right#{$modifier-chars + $x} {
+						@extend %space__cell--#{$i}__gap--right--#{$x}; // space__cell--{#;}__gap--right--{#;}
+					}
+				}
+
+				@if ($twelve-space--selectors__output and $twelve-space--selectors-group--expand) {
+					.#{$space__cell--version + $separator-chars}expand#{$modifier-chars + $x} {
+						@extend %space__cell--#{$i}__expand--#{$x}; // space__cell--{#;}__expand--{#;}
+					}
+				}
+
+				@if ($twelve-space--selectors__output and $twelve-space--selectors-group--offset) {
+					.#{$space__cell--version + $separator-chars}offset {
+
+					}
+
+					.#{$space__cell--version + $separator-chars}offset#{$modifier-chars + $x} {
+						@extend %space__cell--#{$i}__offset--#{$x}; // space__cell--{#;}__offset--{#;}
+					}
+
+					.#{$space__cell--version + $separator-chars}offset#{$modifier-chars}negative#{$modifier-chars + $x} {
+						@extend %space__cell--#{$i}__offset--negative--#{$x}; // space__cell--{#;}__offset--negative--{#;}
+					}
+				}
+			}
+
+			@if ($twelve-space--selectors__output and $twelve-space--selectors-group--offset) {
+				.#{$space__cell + $modifier-chars}offset {
+				}
+
+				.#{$space__cell + $modifier-chars}offset#{$modifier-chars + $i} {
+					@extend %space__cell--offset--#{$i}; // space__cell--offset--{#;}
+				}
+
+				.#{$space__cell + $modifier-chars}offset#{$modifier-chars}negative#{$modifier-chars + $i} {
+					@extend %space__cell--offset--negative--#{$i}; // space__cell--offset--negative--{#;}
+				}
+			}
+		}
+
+		@if ($twelve-space--selectors__output and $twelve-space--selectors-group--gap) {
+			.#{$block-name + $separator-chars}gap { // space__gap;
+			}
+
+			.#{$block-name + $separator-chars}gap#{$modifier-chars}right { // .space__gap--right
+				@extend %space__gap--right;
+			}
+
+			.#{$block-name + $separator-chars}gap#{$modifier-chars}left { // .space__gap--left
+				@extend %space__gap--left;
+			}
+		}
+
+		@if ($twelve-space--selectors__output and $twelve-space--selectors-group--gap) {
+			@for $i from 1 through $max-spaces {
+				.#{$block-name + $separator-chars}gap#{$modifier-chars}right#{$modifier-chars + $i} { // .space__gap--right--{#;}
+
+					@if ($i == 1) {
+						@extend %space__gap--right;
+
+					} @else {
+						@extend %space__gap--right--#{$i};
+					}
+
+				}
+				.#{$block-name + $separator-chars}gap#{$modifier-chars}left#{$modifier-chars + $i} {  // .space__gap--left--{#;}
+
+					@if ($i == 1) {
+						@extend %space__gap--left;
+
+					} @else {
+						@extend %space__gap--left--#{$i};
+					}
+
+				}
+			}
+		}
+
+		@if ($twelve-space--selectors__output and $twelve-space--selectors-group--gap) {
+			.#{$block-name + $separator-chars}gap#{$modifier-chars}padding { // space__gap--padding
+				@extend %space__gap--padding !optional;
+			}
+
+			.#{$block-name + $separator-chars}gap#{$modifier-chars}padding#{$modifier-chars}right { // space__gap--padding--right
+				@extend %space__gap--padding--right;
+			}
+
+			.#{$block-name + $separator-chars}gap#{$modifier-chars}padding#{$modifier-chars}left { // space__gap--padding--left
+				@extend %space__gap--padding--left;
+			}
+
+			@for $i from 1 through $max-spaces {
+				.#{$block-name + $separator-chars}gap#{$modifier-chars}padding#{$modifier-chars}right#{$modifier-chars + $i} { // space__gap--padding--right--{#;}
+					@if ($i == 1) {
+						@extend %space__gap--padding--right;
+
+					} @else {
+						@extend %space__gap--padding--right--#{$i};
+					}
+				}
+
+				.#{$block-name + $separator-chars}gap#{$modifier-chars}padding#{$modifier-chars}left#{$modifier-chars + $i} { // space__gap--padding--left--{#;}
+					@if ($i == 1) {
+						@extend %space__gap--padding--left;
+
+					} @else {
+						@extend %space__gap--padding--left--#{$i};
+					}
+				}
+
+			}
+		}
+
+		@if ($twelve-space--selectors__output and $twelve-space--selectors-group--gap) {
+			.#{$block-name + $modifier-chars}table { // %space--table
+			}
+
+			.#{$block-name + $modifier-chars}table#{$separator-chars + $element-name} { // %space--table__cell
+				@extend %space--table__cell;
+			}
+
+			@for $i from 1 through $max-spaces {
+				.#{$block-name + $modifier-chars}table#{$separator-chars + $element-name + $modifier-chars + $i} {
+					@extend %space--table__cell--#{$i};  // %space--table__cell--{#;}
+				}
+			}
+
+			.#{$block-name + $separator-chars}row { // %space__row
+				@extend %space__row;
+			}
+		}
+
+		@if ($twelve-space--selectors__output and $twelve-space--selectors-group--gap) {
+			// "Equal Columns" Setup
+			.#{$block-name + $modifier-chars}equal { // %space--equal
+
+			}
+
+			@for $i from 1 through $max-spaces {
+				.#{$block-name + $modifier-chars}equal#{$modifier-chars + $i} {
+
+					@extend %space--equal--#{$i};
+
+					> #{$elementSelector} {
+						@extend %space__cell;
+					} // .space--equal--{#}
+
+				}
+			}
+		}
+	}
+}
+
+
+// Compile code
+@include createOutput();
+

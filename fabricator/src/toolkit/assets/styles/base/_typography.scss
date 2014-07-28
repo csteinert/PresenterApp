@@ -1,0 +1,175 @@
+/* 
+ * Typography rules  
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,600,700');
+
+body {
+ 	color: $white;
+ 	font-weight: 600;
+ 	font-family: 'Open Sans', sans-serif;
+ 	line-height: (24/16);
+}
+
+h1, h2, h3, h4, h5, h6 {
+ 	color: rgba(119,111,103,1);
+ 	font-family: 'Open Sans', sans-serif;
+ 	font-weight: 700;
+}
+
+h1 {
+ 	font-size: 1.875rem; //30px
+}
+
+h2 {
+	font-size: 1.5rem; //24px
+}
+
+
+b, strong, [class*="strong"] {
+	font-weight: 700;
+}
+
+%title-setup {
+ 	letter-spacing: -.05em;
+	line-height: 1;
+	font-kerning: normal;
+	-webkit-font-kerning: normal;
+ 	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+%title-base {
+	@extend %title-setup;
+
+	padding-top: $10px;
+	padding-bottom: $20px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.hnb-inclusion-whatsInclusion-title {
+	@extend %title-base;
+}
+
+.title {
+	@extend %title-base;
+	@include clear-after;
+}
+
+
+%title__sub {
+	font-size: 0.583em;
+	line-height: .9;
+}
+
+.title--results {
+	@extend %title-base;
+	@extend %table-setup;
+
+	color: $aqua;
+
+	> span {
+		@extend %table-cell;
+		vertical-align: top;
+
+		&.title__sub {
+		}
+
+		&.title__question {
+			width: 80%;
+		}
+	}
+}
+
+
+.title__sub {
+	@extend %title__sub;
+	
+	width: 5em;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.title__question {
+	@extend .upper;
+}
+
+
+a.title__sub {
+	//@extend .button--green;
+}
+
+span.title__sub {
+
+}
+
+//.title__sub--alt {
+//	@extend %title__sub;
+//
+//	@media (max-width: 850px) {
+//		float: none;
+//		display: block;
+//		padding-top: 10px;
+//	}
+//}
+
+/*
+.title--green {
+	@extend %title-base;
+	@extend .color--green;
+}
+
+.title--orange {
+	@extend %title-base;
+	@extend .color--orange;
+}
+
+%title-base--sub {
+	@extend %title-setup;
+
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.title--sub {
+	@extend %title-base--sub;
+
+	color: $dark;
+}
+*/
+
+.title--base {
+	@extend %title-base--sub;
+
+	color: $base;
+}
+
+/*
+.title--white {
+	@extend %title-base--sub;
+
+	color: $white;
+}
+
+.title--sub--green {
+	@extend %title-base--sub;
+	
+	color: $green;
+}
+
+
+.title--sub--orange {
+	@extend %title-base--sub;
+	
+	color: $orange;
+}
+
+.font-size--medium {
+	font-size: 13px;
+}
+*/
+
+
+

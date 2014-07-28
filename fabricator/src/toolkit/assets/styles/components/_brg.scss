@@ -1,0 +1,109 @@
+/**
+ * BRG
+ */
+
+.brg-intro {
+	display: table;
+}
+
+.brg-intro__content, .brg-intro__extras {
+	display: table-cell;
+
+}
+
+.brg-intro__content {
+	padding-right: $default-space * 2;
+}
+
+.brg-intro__extras {
+	width: 320px;
+}
+
+.structure--module {
+	@extend %brg-shadow;
+
+	margin-bottom: $default-space + 4px;
+	max-width: 640px;
+}
+
+@media (max-width: 800px) {
+	.brg-intro {
+		display: block;
+	}
+
+	.brg-intro__content, .brg-intro__extras {
+		display: block;
+	}
+
+	.brg-intro__content {
+		padding-right: 0;
+	}
+
+	.brg-intro__extras {
+		width: auto;
+	}
+}
+
+
+.structure--module__asset {
+	background-color: #B3B3AA;
+
+	img {
+		display: block;
+		width: 100%;
+	}
+
+	h2 {
+		border-top: 1px solid #FFF;
+		color: #FFF;
+		font-size: 18px !important;
+	}
+}
+
+.structure--module__titles {
+	font-size: 12px;
+}
+
+.structure--module__titles__row {
+
+}
+
+.structure--module__titles__header {
+
+}
+
+.structure--module__cta {
+	&:before {
+		@include glyph;
+		color: $base;
+		content: "* ";
+	}
+}
+
+.brg-events {
+	overflow: hidden;
+	margin-left: -$default-space;
+}
+
+.brg-events__event {
+	float: left;
+	padding-left: $default-space;
+	width: percentage(1/3);
+	
+	@media (max-width: (640px + ($default-space * 4)) ) {
+		width: 50%;
+	}
+}
+
+
+@media (max-width: 460px) {
+	.brg-events {
+		margin-left: 0;
+	}
+
+	.brg-events__event {
+		float: none;
+		padding-left: 0;
+		width: auto;
+	}
+}

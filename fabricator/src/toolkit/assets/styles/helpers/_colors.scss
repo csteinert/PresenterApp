@@ -1,0 +1,64 @@
+/* 
+ * Colors  
+ */
+ 
+@mixin createColorClasses($name, $color) {
+	.color--#{$name} {
+		color: $color !important;
+	}
+
+	.background-color--#{$name} {
+		background-color: $color;
+	}
+}
+
+@include createColorClasses("off-white", $off-white);
+
+/*
+.body-bg {
+	@extend .background-color--white;
+	
+	//background-color: blue !important;
+}
+
+.body-bg--alt {
+	@extend .background-color--off-white;
+
+	//background-color: red !important;
+}
+*/
+
+@include createColorClasses("white", $white);
+@include createColorClasses("blue", $blue);
+@include createColorClasses("aqua", $aqua);
+
+
+@mixin temp($name, $color) {
+	/*
+		<div class="f-color-chip f-color-chip--primary">
+			<div class="f-color-chip__name">#{$name}</div>
+			<div class="f-color-chip__color">#{$color}</div>
+		</div>
+	*/
+}
+
+//@include temp("orange", rgba(217,94,0,1));
+//@include temp("green", rgba(144,187,63,1));
+//@include temp("green-alt", rgba(102,189,41,1));
+//@include temp("dark-blue", rgba(62,119,154,1));
+//@include temp("gray-brown", rgba(129,129,113,1));
+//@include temp("light-gray", rgba(173,174,175,1));
+//@include temp("envelope-bg", rgba(219,219,219,1));
+//@include temp("light-blue", rgba(175,198,212,1));
+//@include temp("link-blue", rgba(17,164,212,1));
+//@include temp("base", rgba(109,110,113,1));
+//@include temp("warm-gray", rgba(119,111,103,1));
+
+
+%light-color-on-dark {
+	color: #FFF;
+}
+
+%dark-color-on-light {
+	color: $base;
+}

@@ -1,0 +1,157 @@
+/* 
+ * Navigation Items
+ */
+
+.nav-item {
+	@extend .unlist--nav;
+}
+
+.nav-item__cta, .nav-item__img {
+	@include allChange();
+}
+
+%nav-item__hover--color {
+	background-color: rgba(0,0,0,.14);
+}
+
+%nav-item__hovers {
+	&:hover {
+		@extend %nav-item__hover--color;
+	}
+}
+
+.nav-item__cta {
+	@extend %nav-item__hovers;
+
+	display: block;
+	padding: $default-space--smaller;
+	background-color: transparent;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	line-height: 1;
+
+	&.text-shadow {
+		&:hover {
+			text-shadow: 0 1px 1px rgba(0,0,0,.18);
+		}
+	}
+}
+
+.nav-item--brackets {
+	@extend .unlist--nav;
+	@extend %clear-after-ph;
+	
+	display: block;
+	margin-right: 0;
+	margin-left: -2px;
+	padding-right: 0;
+	
+	> li {
+		position: relative;
+		margin-top: 1px;
+		margin-right: 0;
+		margin-bottom: 1px;
+		margin-left: 2px;
+
+		&:before {
+			position: relative;
+			left: -4px;
+			display: inline-block;
+			float: left;
+			width: 2px;
+			color: rgba(0,0,0,.35);
+			content: "| ";
+			font-size: .8em;
+			line-height: 2.7;
+		}
+
+		&:first-child {
+			&:before {
+				display: none;
+			}
+		}
+
+		&.nav-item__img {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+
+		&:hover {
+			> a {
+				@extend %nav-item__hover--color;
+			}
+			
+			.nav-item__sub-child {
+				display: block;
+			}
+		}
+	}
+}
+
+
+.nav-item__img {
+	@extend %nav-item__hovers;
+
+	padding: $default-space--smaller;
+	border-right: 1px solid rgba(255,255,255,.42);
+	border-left: 1px solid rgba(255,255,255,.42);
+	background-color: rgba(0,0,0,.11);
+	
+	.nav-item__cta {
+		padding: 0;
+		background-color: transparent !important;
+
+		&:hover {
+			background-color: transparent !important;
+		}
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		opacity: .99;
+	}
+
+	&:hover {
+		border-color: #FFF;
+		img {
+			opacity: 1;
+		}
+	}
+}
+
+
+@media (max-width: 730px) {
+	.nav-item__img, .nav-item__cta {
+		padding: 5px;
+	}
+}
+
+
+.nav-item__sub-child {
+	@extend .unlist;
+	position: absolute;
+	z-index: 101;
+	display: none;
+	margin-top: -5px;
+	min-width: 200px;
+	
+	border-right: 1px solid rgba(0,0,0,.14);
+	border-bottom: 2px solid $green-dark;
+	border-left: 1px solid rgba(0,0,0,.14);
+
+	> li {
+		border-top: 1px solid rgba(255,255,255,.2);
+		border-bottom: 1px solid rgba(0,0,0,.15);			
+		
+		&:first-child {
+			border-top: 1px solid rgba(0,0,0,.14);
+		}
+	}
+
+	a {
+		padding: 10px 20px;
+	}
+}

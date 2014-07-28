@@ -1,0 +1,343 @@
+// ==========================================================================
+// Twelve-Space Structure System Helper Classes
+// ==========================================================================
+
+// Float Options
+
+%float-left {
+	float: left;
+}
+
+%float-right {
+	float: right;
+}
+
+%clear {
+	clear: both;
+}
+
+%clear-after {
+	&:after {
+		@extend %clear;
+		display: table;
+		content: "";
+	}
+}
+
+%every-other-float-opposite-setup {
+	&:nth-child(odd) {
+		@extend %float-left;
+	}
+	&:nth-child(even) {
+		@extend %float-right;
+	}
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--floats__output) {
+
+	.float-left {
+		@extend %float-left;
+	}
+
+	.float-right {
+		@extend %float-right;
+	}
+
+	.clear {
+		@extend %clear;
+	}
+
+	.clear-after {
+		@extend %clear-after;
+	}
+
+}
+
+
+// Display Types
+
+%display-hidden, %hidden, %hide {
+	display: none;
+}
+
+%display-block, %block, %show {
+	display: block;
+}
+
+%display-inline-block, %inline-block {
+	display: inline-block;
+}
+
+%display-inline, %inline {
+	display: inline;
+}
+
+%display-table, %table {
+ 	display: table;
+}
+
+%display-table-cell, %table-cell  {
+	display: table-cell;
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--displays__output) {
+
+	.display-hidden, .hidden, .hide {
+		@extend %display-hidden;
+	}
+
+	.display-block, .block, .show {
+		@extend %display-block;
+	}
+
+	.display-inline-block, .inline-block {
+		@extend %display-inline-block;
+	}
+
+	.display-inline, .inline {
+		@extend %display-inline;
+	}
+
+	.display-table, .table {
+		@extend %display-table;
+	}
+
+	.display-table-cell, .table-cell {
+		@extend %display-table-cell;
+	}
+
+}
+
+
+// Positioning Types
+
+%position-relative, %relative {
+	position: relative;
+}
+
+%position-absolute, %absolute {
+	position: absolute;
+}
+
+%position-fixed, %fixed {
+	position: fixed;
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--positions__output) {
+
+	.position-relative, .relative {
+		@extend %position-relative;
+	}
+
+	.position-absolute, .absolute {
+		@extend %position-absolute;
+	}
+
+	.position-fixed, .fixed {
+		@extend %position-fixed;
+	}
+
+}
+
+
+// Position Type `z-index` Options
+
+
+@for $i from 0 through $twelve-space--max-spaces {
+	%position-z-index-setup--#{$i} {
+		z-index: $i;
+	}
+
+	%position-relative--#{$i} {
+		@extend %position-relative;
+		@extend %position-z-index-setup--#{$i};
+	}
+
+	%position-absolute--#{$i} {
+		@extend %position-absolute;
+		@extend %position-z-index-setup--#{$i};
+	}
+
+	%position-fixed--#{$i} {
+		@extend %position-fixed;
+		@extend %position-z-index-setup--#{$i};
+	}
+
+	@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--z-index__output) {
+
+		.position-relative--#{$i} {
+			@extend %position-relative--#{$i};
+		}
+
+		.position-absolute--#{$i} {
+			@extend %position-absolute--#{$i};
+		}
+
+		.position-fixed--#{$i} {
+			@extend %position-fixed--#{$i};
+		}
+
+	}
+}
+
+
+// Overflow Types
+
+%overflow-x-hidden, %hidden-x {
+	overflow-x: hidden;
+}
+
+%overflow-y-hidden, %hidden-y {
+	overflow-y: hidden;
+}
+
+%overflow-hidden, %hidden {
+	@extend %overflow-x-hidden;
+	@extend %overflow-y-hidden;
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--overflow__output) {
+
+	.overflow-x-hidden, .hidden-x {
+		@extend %overflow-x-hidden;
+	}
+
+	.overflow-y-hidden, .hidden-y {
+		@extend %overflow-y-hidden;
+	}
+
+	.overflow-hidden, .hidden {
+		@extend %overflow-hidden;
+	}
+}
+
+
+// Alignment Options
+
+%top-50-setup {
+ 	top: 50%;
+}
+
+%left-50-setup {
+ 	left: 50%;
+}
+
+%vertical-align {
+	// Requires IE9+
+ 	@extend %position-absolute;
+ 	@extend %top-50-setup;
+
+	transform: translateY(-50%);
+}
+
+%center {
+ 	@extend %position-absolute;
+ 	@extend %top-50-setup;
+ 	@extend %left-50-setup;
+	// Requires IE9+
+	// Requires parent to be `position: relative`
+
+	transform: translate(-50%, -50%);
+}
+
+%vertical-align-middle {
+	vertical-align: middle;
+}
+
+%vertical-align-baseline {
+	vertical-align: baseline;
+}
+
+%vertical-align-text-bottom {
+	vertical-align: text-bottom;
+}
+
+%vertical-align-top {
+	vertical-align: top;
+}
+
+%vertical-align-bottom {
+	vertical-align: bottom;
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--alignment__output) {
+
+	.vertical-align {
+		@extend %vertical-align;
+	}
+
+	.center {
+		@extend %center;
+	}
+
+	.vertical-align-middle {
+		@extend %vertical-align-middle;
+	}
+
+	.vertical-align-baseline {
+		@extend %vertical-align-baseline;
+	}
+
+	.vertical-align-bottom {
+		@extend %vertical-align-bottom;
+	}
+
+	.vertical-align-text-bottom {
+		@extend %vertical-align-text-bottom;
+	}
+
+	.vertical-align-top {
+		@extend %vertical-align-top;
+	}
+
+}
+
+
+// Text Horizontal Alignment Types
+
+%text-align-justify {
+	text-align: justify;
+}
+
+%text-align-center {
+	text-align: center;
+}
+
+%text-align-right {
+	text-align: right;
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--text-alignment__output) {
+
+	.text-align-justify {
+		@extend %text-align-justify;
+	}
+
+	.text-align-center {
+		@extend %text-align-center;
+	}
+
+	.text-align-right {
+		@extend %text-align-right;
+	}
+}
+
+
+// Width Options
+
+%width-100, %full {
+	width: 100%;
+}
+
+@if ($twelve-space--helper-classes__output and $twelve-space--helper-class-group--widths__output) {
+
+	.full {
+		@extend %full;
+	}
+
+	img.full  {
+		@extend %display-block;
+		@extend %full;
+	}
+
+}

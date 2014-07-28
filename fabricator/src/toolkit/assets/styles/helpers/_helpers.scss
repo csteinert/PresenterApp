@@ -1,0 +1,72 @@
+/* 
+ * Class & placeholders helpers  
+ */
+
+.text-align--center {
+	text-align: center;
+}
+
+.text-align--right {
+	text-align: right;
+}
+
+// need to add:
+.anchored--bottom {
+	@extend %position-absolute;
+
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+
+//need to add:
+%helper--dark-background {
+	color: rgba(255,255,255,.98);
+
+	&:hover {
+		color: rgba(255,255,255,1);
+	}
+}
+
+.helper--dark-background {
+	@extend %helper--dark-background;
+
+	a {
+		@extend %helper--dark-background;
+	}
+}
+
+.full {
+	width: 100%;
+}
+
+.block {
+	display: block;
+}
+
+img.full {
+	@extend .block;
+}
+
+.reset--body, .reset--html {
+	margin: 0;
+	padding: 0;
+}
+
+%over-fix-for-apps {
+	overflow: hidden;
+}
+
+.html—inner-app {
+	@extend %over-fix-for-apps;
+}
+
+html.html—inner-app {
+	@extend %over-fix-for-apps;
+
+	> body {
+		@extend %over-fix-for-apps;
+	}
+}
+

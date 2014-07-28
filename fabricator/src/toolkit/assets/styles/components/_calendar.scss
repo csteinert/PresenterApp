@@ -1,0 +1,275 @@
+/**
+ * Calendar / Upcoming Events
+ */
+
+
+$all-button-width: 50px;
+
+%tab-border-bottom {
+	border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.tabbed-nav {
+	position: relative;
+	margin-bottom: $default-space--smaller;
+	padding-right: $all-button-width;
+	width: 100%;
+
+	@media (max-width: 532px) {
+		padding-right: 0;
+	}
+}
+
+.tabbed-nav__child {
+	padding-right: 2px;
+	width: percentage(1/3);
+
+	@media (max-width: 532px) {
+		&:last-child {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 300px) {
+		width: 100%;
+	}
+}
+
+%shared-button-heights {
+	@media (max-width: 532px) {
+		min-height: 64px;
+	}
+}
+
+%tabbed-nav__child__btn--base {
+	@include allChange($duration: 150);
+	@extend %tab-border-bottom;
+	
+	width: 100%;
+	border-top-width: 4px;
+	border-top-style: solid;
+	background-color: #FFF;
+	font-weight: 600;
+	font-size: 0.875em;
+	line-height: 1.3em;
+
+	&:hover, &.active {
+		border-top-color: rgba(255,255,255,.25);
+		color: #FFF;
+		text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+	}
+}
+
+.tabbed-nav__child__btn {
+	@extend %tabbed-nav__child__btn--base;
+	@extend %shared-button-heights;
+
+	border-top-color: $base;
+	color: $base;
+
+	&:hover, &.active {
+		background-color: $base;
+	}
+}
+
+.tabbed-nav__child__btn--orange {
+	@extend %tabbed-nav__child__btn--base;
+	@extend %shared-button-heights;
+
+	border-top-color: $orange;
+	color: $orange;
+
+	&:hover, &.active {
+		background-color: $orange;
+	}
+}
+
+.tabbed-nav__child__btn--green {
+	@extend %tabbed-nav__child__btn--base;
+	@extend %shared-button-heights;
+	
+	border-top-color: $green;
+	color: $green;
+
+	&:hover, &.active {
+		background-color: $green;
+	}
+}
+
+.tabbed-nav__child__btn--all {
+	@extend %tabbed-nav__child__btn--base;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: $all-button-width;
+	border-top-color: #AFC6D4;
+	background-color: #3E779A;
+	color: #FFF;
+	height: 100%;
+
+	> span {
+		display: none;
+	}
+
+	&:hover, &.active {
+		background-color: $green-dark;
+	}
+
+
+	@media (max-width: 532px) {
+		position: relative;
+		height: auto;
+		border-top: none;
+		margin-top: 4px;
+		width: 100%;
+
+		> span {
+			display: inline;
+		}
+	}
+}
+
+.calendar-list {
+}
+
+.calendar-list__item {
+	@extend %tab-border-bottom;
+
+	position: relative;
+	margin-bottom: $default-space--smaller;
+}
+
+.calendar-list__item--callout {
+	@extend .calendar-list__item;
+
+	padding: 5px $default-space--smaller;
+	background-color: #ADAEAF;
+	color: #FFF;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+	line-height: 1.333;
+}
+
+%animations-for-events {
+	@include allChange;
+}
+
+%calendar-list__item__event {
+	position: relative;
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: $all-button-width + 10;
+	padding-right: $all-button-width + 10;
+	min-height: $all-button-width + 10;
+	background-color: #FFF;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+	line-height: 1.333;
+	color: $base;
+
+	&:hover {
+		//color: #FFF;
+		 > span {
+			//border-right: 1px solid #FFF;
+			opacity: .8;
+			//background-color: $dark;
+		 }
+	}
+
+	> span {
+		color: #FFF;
+		//border-right: 1px solid transparent;
+	}
+}
+
+.calendar-list__item__event {
+	@extend %calendar-list__item__event;
+	
+	&:hover {
+		color: $dark;
+	}
+
+	> span {
+		background-color: $base;
+	}
+}
+
+.calendar-list__item__event--green {
+	@extend %calendar-list__item__event;
+	
+	&:hover {
+		color: $green;
+	}
+
+	> span {
+		background-color: $green;
+	}
+}
+
+.calendar-list__item__event--orange {
+	@extend %calendar-list__item__event;
+	
+	&:hover {
+		color: $orange;
+	}
+
+	> span {
+		background-color: $orange;
+	}
+}
+
+%absolute-positioned-item-for-event {
+	position: absolute;
+	top: 0;
+	padding-top: 15px;
+	width: $all-button-width;
+	height: 100%;
+	text-align: center;
+}
+
+.calendar-list__date {
+	@extend %absolute-positioned-item-for-event;
+
+	left: 0;
+	font-weight: 700;
+	font-size: 1.750em;
+	line-height: .8;
+
+	> span {
+		display: block;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 0.393em;
+		line-height: 1.3;
+	}
+}
+
+.calendar-list__add-to-calendar {
+	@extend %absolute-positioned-item-for-event;
+
+	right: 0;
+	background-color: #DBDBDB !important;
+	color: #FFF !important;
+	text-shadow: 0 1px 2px rgba(0,0,0,.2);
+	font-size: 30px;
+
+
+	&:visited {
+		background-color: #DBDBDB !important;
+		color: #FFF !important;
+	}
+
+	&:hover, &:active {
+		background-color: $green !important;
+	}
+
+	&:after {
+		content: "mail";
+	}
+
+	&:active {	
+		&:after {
+			content: "opened";
+		}
+	}
+}

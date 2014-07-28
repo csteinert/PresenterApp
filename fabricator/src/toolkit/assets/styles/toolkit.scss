@@ -1,0 +1,52 @@
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+html, body {
+	overflow-x: hidden;
+	max-width: 100%;
+	font-size: 16px;
+}
+
+*:focus {
+	outline: none;
+}
+
+body {
+	background-color: #000;
+}
+
+
+@import "base/normalize";
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/global-extends";
+@import "helpers/glyphs";
+@import "helpers/colors";
+@import "base/typography";
+//@import "vendors/spacing";
+//@import "helpers/colors";
+//@import "helpers/glyphs";
+//@import "helpers/helpers";
+//@import "helpers/animation";
+//@import "layout/grid";
+//@import "base/typography";
+@import "components/anchors";
+//@import "components/lists";
+//@import "components/borders";
+//@import "components/shadows";
+//@import "layout/nav";
+//@import "components/buttons";
+@import "layout/containers";
+@import "layout/forms";
+@import "components/poll";
+@import "layout/results";
+@import "layout/display-results";
+//
+//@import "pages/home";
+//@import "pages/imageslider";
+//@import "components/poll";
+//@import "components/calendar";
+//@import "components/brg";
+//
+//@import "themes/sharepoint-classes";

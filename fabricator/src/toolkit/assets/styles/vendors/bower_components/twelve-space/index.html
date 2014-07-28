@@ -1,0 +1,377 @@
+
+<!doctype html>
+<html>
+	<head>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+
+		<title>Twelve-Space Demo</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+
+		<link rel="stylesheet" href="css/twelve-space.css" />
+		<style>
+
+
+			/* ==========================================================================
+			   DEMO ONLY CODE
+			   ========================================================================== */
+
+
+			body {
+			  margin: 0;
+			  background-color: #FFF;
+			  color: #333;
+			  font-size: 14px;
+			  font-family: Arial, Verdana, sans-serif;
+			  line-height: 1.57143;
+			}
+
+			#main {
+			  margin: 0 auto;
+			  width: 1000px;
+			}
+
+			#main .space--12 {
+			  background-color: rgba(0, 0, 0, 0.2);
+			}
+
+			.space__cell {
+			  background-color: rgba(0, 0, 0, 0.2);
+			}
+
+			.space--12 > div, .space--table--12 > div {
+			  outline: 1px solid rgba(255, 255, 255, 0.5);
+			  background-color: rgba(0, 0, 0, 0.05);
+			}
+
+			.space--12 > div h2, .space--12 > div p, .space--table--12 > div h2, .space--table--12 > div p {
+			  padding-top: 10px;
+			  padding-right: 10px;
+			  padding-bottom: 10px;
+			  padding-left: 10px;
+			}
+
+			@media screen and (max-width: 1040px) {
+			  #main {
+			    margin-right: 20px;
+			    margin-left: 20px;
+			    width: auto;
+			  }
+			}
+		</style>
+
+
+
+	</head>
+	<body>
+
+
+		<div id="main">
+
+			<div class="space--table--12">
+				<div class="space--table__cell--5">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, praesentium earum animi necessitatibus eum dolorem? Nulla, esse voluptatum dolore rerum minus. Dolore, quam similique nesciunt obcaecati expedita odit facilis maiores consequatur maxime repellat illum explicabo excepturi ut repellendus quos blanditiis quasi non quia perspiciatis inventore eligendi fugiat tempora enim asperiores commodi neque unde ducimus sint doloribus odio nihil eaque mollitia iure sequi necessitatibus sit quod voluptates totam ipsa fugit! Explicabo, consequuntur, aut, aliquid voluptatibus eligendi suscipit nostrum veritatis culpa hic porro nihil nulla voluptas earum maxime iste dolorem fugit commodi voluptate quis distinctio soluta aspernatur doloribus ad provident quo rem laboriosam optio sint similique pariatur sit reiciendis minima qui id dicta corporis nesciunt! Ab quod expedita accusantium iste repellat provident omnis fuga nemo officia animi. Doloremque, id, quam, magnam officia optio provident tenetur accusantium eum quis numquam quae sequi velit architecto nihil debitis doloribus eaque nam. Reiciendis, enim, ipsam est amet laborum quod optio rem porro quibusdam obcaecati consequuntur hic repellat. Impedit officia ad sunt ratione. A, dolorum, quae totam suscipit harum accusamus asperiores ab ex dolores assumenda facere mollitia officia possimus repellat in vero inventore quibusdam iste eveniet hic aliquam nisi excepturi exercitationem sit quia. Eaque, quis, ipsam tenetur quae beatae rerum minus cum ab praesentium voluptatibus? Dolorum, eveniet, consequuntur placeat tempore sint cum reprehenderit minus omnis officia suscipit quos maxime fugit labore aliquam ab dignissimos cumque vel esse inventore et voluptate ut debitis est repellat voluptatibus excepturi laudantium facilis itaque sunt quaerat non ipsa possimus natus similique error quisquam consectetur dolorem? Ab, voluptatem, cupiditate ratione laudantium deserunt iure culpa fugit dolor delectus autem et repudiandae deleniti quod unde commodi perferendis exercitationem esse voluptas maiores consequuntur libero quia veritatis fugiat odit optio cum quo ea soluta quis eveniet explicabo iste asperiores quidem. Facere laborum at impedit officiis quod magnam laboriosam voluptatum perspiciatis! Quaerat, quis, laborum, dolore id quam excepturi eaque tempora aliquam quasi facere numquam ullam fugiat mollitia explicabo amet doloribus maxime dolores provident odit reiciendis. Quasi, asperiores voluptate recusandae magni dolor ipsum molestias facere iste mollitia dolores! Animi, dignissimos dolore officia assumenda facere commodi placeat optio blanditiis. Exercitationem, debitis, eum, error vel quibusdam dicta cumque expedita quos dignissimos culpa quasi nisi officiis minima laboriosam adipisci aspernatur dolor suscipit tenetur consequatur consequuntur facere nobis ea distinctio iure in voluptatibus labore mollitia similique aliquam nihil. Ratione, fugiat, quae, rem officia doloremque repellat voluptate magnam repellendus quasi quia deleniti vero inventore!
+				</div>
+				<div class="space--table__cell--5 vertical-align-middle">
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate tempora ab obcaecati. Dolor quasi sapiente odit magnam? Beatae, odio, delectus perspiciatis magni labore omnis vitae accusantium molestias debitis totam numquam.</span><span>Incidunt, quis, quibusdam, sunt quos corporis necessitatibus impedit ipsa molestias modi et doloremque deserunt qui ipsam blanditiis quam. Voluptatibus, non harum sit deserunt reprehenderit et officiis adipisci saepe fugit mollitia!</span></p>
+				</div>
+			</div>
+
+			<h2>
+				Simple default
+			</h2>
+			<p>
+				Floats nth-child odd to left and nth-child even to the
+			</p>
+			<div class="space--12">
+				<div class="space__cell">
+					I float to left
+				</div>
+				<div class="space__cell">
+					I am on the right
+					<br />
+					My container is as wide as my content
+				</div>
+			</div>
+
+			<h2>
+				5-7 Example
+			</h2>
+			<p>
+				Column that's 5 spaces and a column that's 7 spaces.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--7">
+					<p>
+						I am 7 spaces
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				7-5 Example
+			</h2>
+			<p>
+				Column that's 7 spaces and a column that's 5 spaces.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--7">
+					<p>
+						I am 7 spaces
+					</p>
+				</div>
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				5-2-5 Example
+			</h2>
+			<p>
+				3 columns that add up to 12: 5+2+5. You can add more columns, if you can make the containers fit for your content.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--2">
+					<p>
+						I am 2 spaces
+					</p>
+				</div>
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				5-2-5 with 5-7 Example
+			</h2>
+			<p>
+				2 rows, first row has 3 columns and second row has 2 columns.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--2">
+					<p>
+						I am 2 spaces
+					</p>
+				</div>
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--7">
+					<p>
+						I am 7 spaces
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				5-7 Table Example
+			</h2>
+			<p>
+				Column that's 7 spaces and a column that's 5 spaces.
+			</p>
+			<div class="space--table--12">
+				<div class="space--table__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space--table__cell--7">
+					<p>
+						I am 7 spaces
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				5-7 Table Example With Vertical Alignment
+			</h2>
+			<p>
+				Column that's 7 spaces and a column that's 5 spaces. The 5 column spaced container has content aligned vertically in the middle.
+			</p>
+			<div class="space--table--12">
+				<div class="space--table__cell--5 vertical-align-middle">
+					<p>
+						I am 5 spaces and vertically aligned in the middle.
+					</p>
+				</div>
+				<div class="space--table__cell--7">
+					<h2>
+						I am 7 Spaces
+					</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non mauris non leo fermentum laoreet vitae quis augue. Pellentesque eu ante iaculis, facilisis elit vitae, pulvinar lacus. Donec euismod, est non luctus blandit, lorem lacus gravida augue, sed sodales turpis dui vel justo. Donec ut condimentum dolor, nec mattis urna. Aenean nec arcu a nisl convallis blandit. Suspendisse vulputate sapien vitae odio tristique ullamcorper. In egestas id arcu sed mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium sollicitudin est. Suspendisse potenti. Ut quis magna et ipsum ultrices molestie. Mauris non lacus sapien. Sed at orci porttitor leo eleifend suscipit. Phasellus et dolor ornare, cursus nibh eu, cursus urna. Sed ultrices, dui a malesuada bibendum, purus lacus condimentum orci, vitae volutpat elit orci non dolor. Donec vel turpis non lectus aliquam lobortis nec auctor dolor.
+					</p>
+				</div>
+			</div>
+
+
+			<h2>
+				5-5 Example with offset
+			</h2>
+			<p>
+				Two 5 space columns with the first offset by 2 spaces
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5 space__cell--offset--2">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--5">
+					<p>
+						I am 7 spaces and offset by 2 spaces to the left.
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				5-7 Example with negative offset
+			</h2>
+			<p>
+				Column that's 7 spaces and a column that's 5 spaces.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5">
+					<p>
+						I am 5 spaces
+					</p>
+				</div>
+				<div class="space__cell--7 space__cell--offset--negative--2">
+					<p>
+						I am 7 spaces and offset by 2 spaces to the left.
+					</p>
+				</div>
+			</div>
+
+
+			<h2>
+				5-7 Example with expanding
+			</h2>
+			<p>
+				Column that's 7 spaces and a column that's 5 spaces, with 5 expanding 2 spaces.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5 space__cell--expand--2 position-relative--1">
+					<p>
+						I am 5 spaces, I also have <code>.position--1</code> to make me be a higher index.
+						<br />
+						<code>.position--#</code>: Where "#" can be 1-12 for its <code>z-index</code> to be the # in the modifer. By default makes the element <code>.position: relative</code>, but you can also use <code>.position-absolute--1</code> to make element have a position of absolute.
+					</p>
+				</div>
+				<div class="space__cell--7">
+					<p>
+						I am 7 spaces and offset by 2 spaces to the left.
+					</p>
+				</div>
+			</div>
+
+			<h2>
+				5-7 Example with child layering
+			</h2>
+			<p>
+				Column that's 7 spaces and a column that's 5 spaces, with child container expanding 2 spaces from 5 space column. 7 space has image using helper classes and is offset negatively by 1.
+			</p>
+			<div class="space--12">
+				<div class="space__cell--5">
+					<p class="space__cell--5__expand--2 position--1">
+						I am 5 spaces and contain more content than expected
+					</p>
+				</div>
+				<div class="space__cell--7">
+					<img class="block space__cell--7__offset--negative--1 space__cell--7__expand--1" src="http://placehold.it/200x100" />
+					<h2 class="space__cell--7__offset--negative--5">
+						More laying here too! I'm actually in the 7-Space column but I look like I'm in the 5-Space column
+					</h2>
+				</div>
+			</div>
+
+
+			<h2>
+				Here are some grids too
+			</h2>
+			<p>
+				Helpful with variable content
+			</p>
+			<div class="space--equal--3">
+				<div class="space__cell">
+					<p>
+						I have content
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content and I have MORE content
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content, but we keep even rows
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content
+					</p>
+				</div>
+				<div class="space__cell">
+					<p>
+						I have content
+					</p>
+				</div>
+			</div>
+
+			<h1>
+				More examples, demos, documentation, training videos coming soon!
+			</h1>
+
+		</div>
+
+	</body>
+</html>

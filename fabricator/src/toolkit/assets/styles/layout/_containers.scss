@@ -1,0 +1,31 @@
+/* 
+ * Containers
+ */
+
+ .container {
+ 	/* */
+ }
+
+.container--full {
+}
+
+
+.container__wrap {
+	@extend %container__base;
+
+
+	@media (max-width: (($default-space) + $max-width)) {
+		margin-right: $default-space / 2;
+		margin-left: $default-space / 2;
+	}
+
+}
+
+
+.structure--1 {
+	@extend %table-setup;
+}
+
+.structure--1__item {
+	display: table-row;
+}

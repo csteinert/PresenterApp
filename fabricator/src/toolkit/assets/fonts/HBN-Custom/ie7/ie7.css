@@ -1,0 +1,6 @@
+.icon--list {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3d;');
+}
+.icon--search {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3e;');
+}

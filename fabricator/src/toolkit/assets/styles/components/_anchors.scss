@@ -1,0 +1,16 @@
+/* 
+ * Anchors/Links
+ */
+
+a {
+	@extend %all--change;
+	
+	text-decoration: none;
+	color: $aqua;
+
+	&:hover {
+		color: #FFF;
+	}
+
+}
+

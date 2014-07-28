@@ -1,0 +1,41 @@
+/** 
+ * Results
+ */
+
+
+.poll--results { //container
+	@extend %padding--verticals;
+}
+
+.poll__result { // row
+}
+
+.poll__result__bar {
+	background-color: $dark;
+	position: relative;
+	min-height: 4em;
+}
+
+.poll__result__bar__amount {
+	@include allChange;
+	@extend %padding--sides--half;
+
+	color: #000;
+	height: 100%;
+	line-height: 2;
+	position: absolute;
+	font-size: 2em;
+	background-color: $aqua;
+	text-shadow: 0.063em 0.063em 0 $aqua, -0.063em -0.063em 0 $aqua, 0 0.063em 0 $aqua, 0 -0.063em 0 $aqua, -0.063em 0 0 $aqua, 0.063em 0 0 $aqua, 0 0.063em 0 $aqua;
+
+	&[style*="width: 0%"] {
+		padding-right: 0 !important;
+	}
+}
+
+.poll__result__text {
+	@extend %padding-bottom;
+
+	padding-top: $default-space--smallest;
+	display: block;
+}

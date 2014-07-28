@@ -1,0 +1,18 @@
+/* 
+ * Shadows
+ */
+
+%brg-shadow, .brg-shadow {
+	border: 1px solid #F5f5F5;
+	border-radius: 3px;
+	background-color: #FFF;
+	box-shadow: 0 3px 0 rgba(0,0,0,.2);
+}
+
+.shadow {
+	box-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+
+.text-shadow {
+	text-shadow: 0 -1px 1px rgba(0,0,0,.18);
+}

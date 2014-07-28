@@ -1,0 +1,135 @@
+/* 
+ * Forms
+ */
+
+%form-field-shared {
+	outline: none;
+	font-size: 1em;
+}
+
+%input-shared__appearance {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+}
+
+%input-reset {
+	@extend %input-shared__appearance;
+	line-height: 1;
+}
+
+input, button, select, option {
+	@extend %form-field-shared;
+}
+
+button {
+	outline: none;
+	border: 0;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="search"], input[type="url"], {
+	@extend %input-reset;
+	
+	border-radius: 0;
+}
+
+button, input[type="button"] {
+	@extend %input-reset;
+
+	border-radius: 0;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	//@extend %input-reset;
+	//opacity: 0;
+}
+
+form, legend {
+	display: block;
+	margin: 0;
+	outline: none;
+}
+
+fieldset {
+	@extend .reset-form;
+
+	padding: 0;
+	border: none;
+}
+
+%form-settings {
+	@include allChange;
+
+	background-color: $dark;
+	padding: $default-space--smaller;
+	outline: none;
+	color: $aqua;
+	border: none;
+	font-size: 1rem;
+	margin-bottom: $default-space--smaller;
+	display: block;
+	padding: $default-space--smaller; 
+	width: 100%;
+
+	&:focus {
+		color: $dark;
+		background-color: #FFF;
+	}
+}
+
+textarea {
+
+	resize: none;
+}
+
+
+@mixin textarea-shared__placeholder {
+	color: #6D6E71;
+	font-size: 12px;
+	line-height: 1.8;
+}
+
+.reset-textarea::-webkit-input-placeholder {
+	@include textarea-shared__placeholder;
+}
+
+.reset-textarea:-moz-placeholder {
+	@include textarea-shared__placeholder;
+}
+
+.reset-textarea::-moz-placeholder {
+	@include textarea-shared__placeholder;
+}
+
+.reset-textarea:-ms-input-placeholder {  
+	@include textarea-shared__placeholder;
+}
+
+
+@mixin shared__placeholder {
+	color: rgba(255,255,255,.8);
+	text-transform: uppercase;
+	font-size: 0.875rem;
+	line-height: 1.8;
+}
+
+input, textarea {
+	@extend %form-settings;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	@include shared__placeholder;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+	@include shared__placeholder;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+	@include shared__placeholder;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {  
+	@include shared__placeholder;
+}

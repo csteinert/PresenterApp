@@ -1,0 +1,337 @@
+/* 
+ * Sharepoint "@extended" Classes
+ */
+ 
+.ms-core-listMenu-horizontalBox > ul {
+	@extend .nav-item--brackets;
+}
+
+.menu-item {
+	@extend .text-shadow;
+	@extend .nav-item__cta;
+}
+
+ul.dynamic {
+	@extend .nav-item__sub-child;
+
+	background-color: $green-alt;
+}
+
+.ms-srch-sb input {
+	@include allChange;
+
+	@extend .search-module__input; //.ms-srch-sb-prompt
+}
+
+.ms-srch-sb-navLink {
+	display: none;
+}
+
+.ms-srch-sb {
+	@extend .search-module;
+}
+
+.ms-srch-sb-searchLink {
+	@extend .search-module__button;
+
+	img {
+		display: none;
+	}
+
+	&:hover {
+		background-color: transparent;
+	}
+
+	&:after {
+		content: "search";
+	}
+}
+
+.ms-core-listMenu-horizontalBox .ms-core-listMenu-item {
+	margin-right: 0 !important;
+}
+
+.header {
+	color: #FFF;
+	
+	.ms-core-listMenu-horizontalBox {
+		a {
+
+			color: #FFF !important;
+			text-decoration: none !important;
+
+			&:hover {
+				background: rgba(0, 0, 0, 0.14);
+				color: #FFF !important;
+			}
+
+			&:visited {
+				color: #FFF !important;
+			}
+		}
+	}
+
+}
+
+
+.ms-webpartzone-cell {
+	margin: 0;
+}
+
+[class*="ms-srch-sb-border"] {
+	border: none !important;
+}
+
+.ms-listMenu-editLink {
+	position: absolute !important;
+	top: -20px;
+	left: 0;
+}
+
+
+
+.ms-microfeed-button, .ms-microfeed-postBody a, .ms-microfeed-postBody a:active, .ms-microfeed-postBody a:hover, .ms-microfeed-postBody a:focus, .ms-microfeed-postBody a:visited {
+	@extend %link-color--orange;
+	@extend %link-hover--green;
+
+	&:visited {
+		@extend %link-color--orange;
+	}
+}
+
+
+
+/**
+ * Newsfeed
+ */
+
+
+.ms-microfeed-feedPart, .ms-microfeed-rootText, .ms-microfeed-fullMicrofeedDiv {
+	min-width: 0 !important;
+	max-width: 100% !important;
+}
+
+.ms-microfeed-thread {
+	margin-bottom: 10px !important;
+	padding: 20px; //each block parent
+	border-bottom: 1px solid #DBDBDB;
+	background-color: #FFF;
+}
+
+.ms-microfeed-message {
+	padding: 0 !important;
+}
+
+.ms-microfeed-userThumbnailAreaRootPadding {
+	float: left;
+}
+
+.ms-microfeed-userThumbnailArea { // person image
+	padding-right: 0 !important;
+
+
+	.ms-table, .ms-tableRow, .ms-tableCell {
+		display: block !important;
+	}
+
+	.ms-tableRow {
+		.ms-tableCell {
+			&:first-child {
+				display: none !important;
+			}
+		}
+	}
+}
+
+%custom-font-for-feed {
+	font-family: 'Open Sans', sans-serif !important;
+}
+
+.ms-metadata, .ms-descriptiontext, .ms-secondaryCommandLink {
+	@extend %custom-font-for-feed;
+}
+
+.ms-peopleux-userImgDiv, .ms-microfeed-userThumbnailArea.ms-microfeed-userThumbnailAreaRootPadding, .ms-microfeed-userThumbnailArea {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	overflow: hidden;
+	width: 48px;
+	height: 48px; //user image parent
+	//border-radius: 24px;
+
+	span {
+		//padding: 0 !important;
+		//margin: 0 !important;
+	}
+
+	.ms-imnSpan {
+		position: absolute;
+		top: -1px;
+	}
+
+	img {
+		position: relative !important;
+	}
+}
+
+.ms-microfeed-rootBody {
+	margin: 0 0 0 $default-space--smaller !important;
+	padding-left: 48px !important; // holder of post content only
+
+	.ms-microfeed-rightAlignedDiv {
+		position: relative !important;
+	}
+
+	.ms-textLarge, .ms-textLarge a {
+		@extend %custom-font-for-feed;
+	 	letter-spacing: -.05em;
+		font-weight: 300 !important;
+		font-size: 18px !important;
+		line-height: 1;  // header user name
+
+		color: $green !important;
+		font-kerning: normal;
+		-webkit-font-kerning: normal;
+	 	text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		&:hover {
+			color: $orange !important;
+		}
+	}
+
+	.ms-microfeed-postBody {
+		margin-top: $default-space--smaller; //post
+		font-size: 14px !important;
+		font-size: 1rem !important;
+	}
+
+	.ms-metadata { // likes
+		font-size: 11px !important;
+	}
+}
+
+
+.ms-microfeed-messageFooter {
+	padding-bottom: 0 !important; //post bottom
+	padding-top: $default-space--smaller !important;
+
+	.ms-microfeed-postedTime, a {
+		font-size: 13px !important;
+	}
+
+	a, .ms-microfeed-button {
+		color: $green !important;
+		font-size: 13px;
+
+		&:hover {
+			color: $orange !important;
+		}
+	}
+}
+
+.ms-webpart-titleText {
+	@extend %custom-font-for-feed;
+
+	color: $base !important;
+ 	letter-spacing: -.05em;
+	font-weight: 600 !important;
+	font-size: 22px !important;
+	line-height: 1;  // header
+	margin: $default-space--smaller 0 !important;
+	font-kerning: normal;
+	-webkit-font-kerning: normal;
+ 	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	 span {
+	 	line-height: 1.333 !important;
+	 }
+}
+
+.ms-microfeed-siteFeedTitleArea {
+	display: none !important;
+}
+
+.ms-microfeed-deleteDiv {
+	button {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+}
+
+.ms-microfeed-postBox {
+	width: 100%;
+	font-size: 16px !important;
+	//@extend %form-settings;
+
+	outline: none !important;
+}
+
+#ms-microblogdiv { //hide posting capabilities
+	display: none !important;
+}
+
+.newsfeed-setup--homepage {
+	border-bottom: 1px solid #DBDBDB;
+	overflow-y: scroll;
+	margin-bottom: $default-space--smaller;
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+	min-height: 460px;
+
+	@media (max-width: 940px) {
+		border-bottom: none;
+		overflow-y: visible;
+		margin-bottom: 0;
+		min-height: 0;
+		height: auto !important;
+	}
+}
+
+.ms-microfeed-replyArea { //reply indented container
+	margin-left: 0 !important;
+	min-width: 0 !important;
+	max-width: 100% !important;
+
+	.ms-microfeed-postBody {
+		display: block;
+	}
+
+	.ms-microfeed-userName {
+		color: $green !important;
+		font-weight: 300 !important;
+
+		&:hover {
+			color: $orange;
+		}
+	}
+}
+
+input.ms-button-emphasize, button.ms-button-emphasize {
+
+	@extend .button;
+	
+	background-color: $orange !important;
+	color: #FFF !important;
+
+	&:visited {
+		background-color: $orange !important;
+	}
+
+	&:hover, &:active {
+		background-color: $green !important;
+	}
+}
+
+.ms-microfeed-replyBackground { //reply background
+	background-color: $off-white !important;
+
+	> div {
+		padding: $default-space--smaller !important;
+	}
+}

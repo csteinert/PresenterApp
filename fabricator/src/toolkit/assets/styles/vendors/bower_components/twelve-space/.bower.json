@@ -1,0 +1,41 @@
+{
+  "name": "twelve-space",
+  "version": "1.0.0",
+  "homepage": "https://github.com/kevinmack18/Twelve-Space",
+  "authors": [
+    "kevinmack18"
+  ],
+  "description": "A Sass-based, BEM, OOCSS framework for creating DOM modules.",
+  "keywords": [
+    "sass",
+    "scss",
+    "css",
+    "grid",
+    "structure",
+    "bem",
+    "oocss",
+    "layout",
+    "module",
+    "helper classes",
+    "silent classes",
+    "css framework",
+    "sass framework",
+    "dom framework",
+    "template",
+    "structure system"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".gitignore"
+  ],
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "d95f0564e6d97c4a21fee31e25fff33ceaf5f0b2"
+  },
+  "_source": "git://github.com/kevinmack18/Twelve-Space.git",
+  "_target": "~1.0.0",
+  "_originalSource": "twelve-space",
+  "_direct": true
+}

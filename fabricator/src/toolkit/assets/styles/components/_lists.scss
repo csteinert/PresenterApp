@@ -1,0 +1,87 @@
+/* 
+ * Lists
+ */
+ 
+.unlist {
+	@extend %unlist;
+
+	> li {
+		display: block;
+	}
+}
+
+.unlist--horz {
+	@extend %unlist-horz;
+}
+
+.unlist--nav {
+	@extend .unlist--horz;
+	@extend %clear-after;
+
+	> li {
+		float: left;
+	}
+}
+
+%reset--list--base-spaces {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+}
+
+.reset--list {
+	@extend %reset--list--base-spaces;
+
+	> li {
+		@extend %reset--list--base-spaces;
+	}
+}
+
+.no-bullets {
+	list-style: none;
+}
+
+.reset--list--alt {
+	@extend .reset--list;
+	@extend .no-bullets;
+}
+
+
+.list--checks {
+	@extend %reset--list--base-spaces;
+	@extend .no-bullets;
+
+	&.checks--green {
+		> li {
+			&:before {
+				color: $green;
+			}
+		}
+	}
+
+	> li {
+		margin-top: 0;
+		margin-bottom: 0;
+ 	 	padding-top: $default-space;
+ 	 	padding-left: 1em;
+  		text-indent: -1em;
+
+  		&:first-child {
+  			padding-top: 0;
+  		}
+
+		&:before {
+			@include glyph;
+
+			padding-right: 5px;
+			content: "X";
+		}
+
+		@media (max-width: $default-space__breakpoint) {
+			padding-top: $default-space / 2;
+		}
+	}
+}
+
+
+

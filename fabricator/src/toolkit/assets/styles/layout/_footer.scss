@@ -1,0 +1,57 @@
+/* 
+ * Footer
+ */
+
+%unlist--horz {
+	@extend %unlist;
+
+	> li {
+		display: inline-block;
+	}
+}
+
+.background-color--gray {
+	background-color: $warm-gray;
+
+	a {
+		color: #FFF;
+
+		&:hover {
+			color: #333;
+		}
+	}
+}
+
+.navigation--footer {
+	@extend %unlist--horz;
+	
+	margin-right: auto;
+	margin-left: auto;
+	max-width: $max-width;
+	text-align: justify;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	
+	&:after {
+		display: inline-block;
+		width: 100%;
+		content: '';
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	> li {
+		padding-bottom: $default-space--smaller;
+		vertical-align: top;
+	}
+}
+
+.navigation__sub {
+	@extend %unlist;
+	
+	text-transform: none;
+	font-weight: normal;
+}
