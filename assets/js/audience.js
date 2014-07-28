@@ -42,15 +42,18 @@ var displayQuestionSlide = function(slide) {
         var html = "[Error: Slide not found]";
         $.each(json, function() {
             var question = this;
+
             if (question.id == slide.id) {
+
                 var answers = "";
                 var index = 0;
                 $.each(question.answers, function() {
-                    answers += atn.dom.response.replace(/{{id}}/gi, question.id).replace(/{{response}}/gi, this).replace(/{{index}}/gi, index);
+                    answers += atn.dom.response.replace(/{{id}}/gi, index).replace(/{{response}}/gi, this).replace(/{{index}}/gi, index);
                     index++;
                 });
                 html = atn.dom.header.replace(/{{question}}/gi, question.question) + "\n" + answers;
             }
+
         });
 
         $("#section-slide").html(html);
@@ -65,12 +68,15 @@ var submitQuestion = function() {
         question = $("#question-input").val();
 
     if (name != "" && question != "") {
+
         questionsRef.push({
             name: name,
             text: question
         });
+
         $("#question-input").val("");
         $("#question-status").text("Your question has been submitted to the presenter.");
+
     } else {
         $("#question-status").text("Please enter your name and question.");
     }
@@ -79,10 +85,12 @@ var submitQuestion = function() {
 var submitResponse = function(selector) {
     var id = selector.data("id"),
         index = selector.data("index");
+
     responsesRef.push({
         questionId: id,
         answerIndex: index
     });
+
     $(".response-input").attr("disabled", "disabled");
 };
 

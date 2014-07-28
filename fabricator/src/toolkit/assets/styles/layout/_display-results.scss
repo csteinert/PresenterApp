@@ -17,7 +17,7 @@
 .title--display-results {
 	@extend %title-base;
 	color: #FFF;
-	padding: .25rem 0;
+	padding: .25rem 0 1rem;
 }
 
 /*
@@ -60,14 +60,31 @@
 
 .poll--display-results__items__item {
 	display: table-row;
+	width: 100%;
+}
+
+.poll--display-results__items__item {
 	height: 20%;
+}
+
+.poll--display-results__items__item--alt {
+	display: table-row;
+	height: 8%;
 	width: 100%;
 }
 
 .poll--display-results__result { // row
-	display: table-cell;
+	@extend %table-cell;
+
 	vertical-align: middle;
 	position: relative;
+}
+
+.poll--display-results__result-title {
+	padding-top: .5rem;
+	vertical-align: top;
+	color: $aqua;
+	font-size: 1rem;
 }
 
 .poll--display-results__result__bar {
@@ -102,7 +119,7 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	color: #FFF;
+	color: #000;
 	//text-shadow: 0.063em 0.063em 0 $aqua, -0.063em -0.063em 0 $aqua, 0 0.063em 0 $aqua, 0 -0.063em 0 $aqua, -0.063em 0 0 $aqua, 0.063em 0 0 $aqua, 0 0.063em 0 $aqua;
 
 }

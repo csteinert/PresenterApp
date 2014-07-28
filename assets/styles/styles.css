@@ -258,7 +258,7 @@ a {
   display: table;
   width: 100%; }
 
-.title--results > span, .display-result__intro, .display-result__content {
+.title--results > span, .display-result__intro, .display-result__content, .poll--display-results__result {
   display: table-cell; }
 
 .reset--p, .reset--h {
@@ -332,29 +332,29 @@ a {
 
 /*
 [class^="icon--"], [class*=" icon--"] {
-	@extend %glyph;
+  @extend %glyph;
 }
 
 .icon--check:before {
-	content: "\58";
+  content: "\58";
 }
 .icon--desktop:before {
-	content: "\2a";
+  content: "\2a";
 }
 .icon--circle:before {
-	content: "\6f";
+  content: "\6f";
 }
 .icon--search:before {
-	content: "\3e";
+  content: "\3e";
 }
 .icon--uniE600:before {
-	content: "\4d";
+  content: "\4d";
 }
 .icon--uniE601:before {
-	content: "\6d";
+  content: "\6d";
 }
 .icon--list:before {
-	content: "\3d";
+  content: "\3d";
 }
 */
 /* 
@@ -368,15 +368,15 @@ a {
 
 /*
 .body-bg {
-	@extend .background-color--white;
-	
-	//background-color: blue !important;
+  @extend .background-color--white;
+  
+  //background-color: blue !important;
 }
 
 .body-bg--alt {
-	@extend .background-color--off-white;
+  @extend .background-color--off-white;
 
-	//background-color: red !important;
+  //background-color: red !important;
 }
 */
 .color--white {
@@ -459,26 +459,26 @@ b, strong, [class*="strong"] {
 
 /*
 .title--green {
-	@extend %title-base;
-	@extend .color--green;
+  @extend %title-base;
+  @extend .color--green;
 }
 
 .title--orange {
-	@extend %title-base;
-	@extend .color--orange;
+  @extend %title-base;
+  @extend .color--orange;
 }
 
 %title-base--sub {
-	@extend %title-setup;
+  @extend %title-setup;
 
-	margin-top: 0;
-	margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .title--sub {
-	@extend %title-base--sub;
+  @extend %title-base--sub;
 
-	color: $dark;
+  color: $dark;
 }
 */
 .title--base {
@@ -486,26 +486,26 @@ b, strong, [class*="strong"] {
 
 /*
 .title--white {
-	@extend %title-base--sub;
+  @extend %title-base--sub;
 
-	color: $white;
+  color: $white;
 }
 
 .title--sub--green {
-	@extend %title-base--sub;
-	
-	color: $green;
+  @extend %title-base--sub;
+  
+  color: $green;
 }
 
 
 .title--sub--orange {
-	@extend %title-base--sub;
-	
-	color: $orange;
+  @extend %title-base--sub;
+  
+  color: $orange;
 }
 
 .font-size--medium {
-	font-size: 13px;
+  font-size: 13px;
 }
 */
 /* 
@@ -764,18 +764,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .title--display-results {
   color: #FFF;
-  padding: 0.25rem 0; }
+  padding: 0.25rem 0 1rem; }
 
 /*
-					<h2 class="title--display-results">
-						<span class="title__question">
-							Question here Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quia quos perspiciatis fugit velit provident impedit hic sapiente voluptatum ad.
-						</span>
+          <h2 class="title--display-results">
+            <span class="title__question">
+              Question here Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quia quos perspiciatis fugit velit provident impedit hic sapiente voluptatum ad.
+            </span>
 
-						<span class="title__sub color--blue">
-							<span class="color--white">###</span> Responses
-						</span>
-					</h2>
+            <span class="title__sub color--blue">
+              <span class="color--white">###</span> Responses
+            </span>
+          </h2>
 
 */
 .display-result__content {
@@ -786,13 +786,25 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .poll--display-results__items__item {
   display: table-row;
-  height: 20%;
+  width: 100%; }
+
+.poll--display-results__items__item {
+  height: 20%; }
+
+.poll--display-results__items__item--alt {
+  display: table-row;
+  height: 8%;
   width: 100%; }
 
 .poll--display-results__result {
-  display: table-cell;
   vertical-align: middle;
   position: relative; }
+
+.poll--display-results__result-title {
+  padding-top: 0.5rem;
+  vertical-align: top;
+  color: #11E3FC;
+  font-size: 1rem; }
 
 .poll--display-results__result__bar {
   height: 100%;
@@ -824,7 +836,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  color: #FFF; }
+  color: #000; }
 
 .poll--display-results__result__text {
   padding-top: 0.313rem;
