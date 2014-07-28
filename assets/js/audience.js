@@ -20,19 +20,7 @@ var displayBlankSlide = function() {
 };
 
 var displayQASlide = function() {
-    $("#section-slide").html(
-        "<article>" +
-        "<h3>Q & A</h3>" +
-        "<input id='name-input' type='text' placeholder='Name'>" +
-        "<br /><br />" +
-        "<input id='question-input' type='text' placeholder='Question'>" +
-        "<br /><br />" +
-        "<input id='submit-question-button' type='button' value='Submit Question'>" +
-        "<br /><br />" +
-        "<span id='question-status'></span>" +
-        "</article>");
-
-    $("#submit-question-button").click(submitQuestion);
+    $section.html("<article><h3>Q & A</h3></article>");
 };
 
 var displayQuestionSlide = function(slide) {
@@ -40,9 +28,7 @@ var displayQuestionSlide = function(slide) {
         var html = "[Error: Slide not found]";
         $.each(json, function() {
             var question = this;
-
             if (question.id == slide.id) {
-
                 var answers = "";
                 var index = 0;
                 $.each(question.answers, function() {
@@ -51,10 +37,9 @@ var displayQuestionSlide = function(slide) {
                 });
                 html = atn.dom.header.replace(/{{question}}/gi, question.question) + "\n" + answers;
             }
-
         });
 
-        $("#section-slide").html(html);
+        $section.html(html);
         $(".response-input").click(function() {
             submitResponse($(this));
         });
@@ -101,4 +86,10 @@ $(function() {
             displayQuestionSlide(slide);
         }
     });
+
+    $("#button-ask-quesiton").click(function () {
+        $("#section-question-form").toggle();
+    });
+
+    $("#submit-question-button").click(submitQuestion);
 });
