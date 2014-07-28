@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var w = window,
     d = document,
@@ -11,11 +11,9 @@ var w = window,
     responsesRef = new Firebase(connectionString + "AudienceResponses/"),
     $section = $("#section-slide");
 
-
 atn.dom = {};
-atn.dom.header = '<h2 class="title--results"><span class="title__question">{{question}}</span></h2>';
-atn.dom.response = '<fieldset class="poll--question__fieldset"><input class="response-input poll--question__radio" id="response_{{id}}" data-id="{{id}}" data-index="{{index}}" value="{{id}}" ame="response" type="radio" /><label class="poll--question__label" for="response_{{id}}">{{response}}</label></fieldset>';
-
+atn.dom.header = "<h2 class='title--results'><span class='title__question'>{{question}}</span></h2>";
+atn.dom.response = "<fieldset class='poll--question__fieldset'><input class='response-input poll--question__radio' id='response_{{id}}_{{index}}' data-id='{{id}}' data-index='{{index}}' value='{{id}}' ame='response' type='radio' /><label class='poll--question__label' for='response_{{id}}_{{index}}'>{{response}}</label></fieldset>";
 
 var displayBlankSlide = function() {
     $section.html("");
@@ -48,7 +46,7 @@ var displayQuestionSlide = function(slide) {
                 var answers = "";
                 var index = 0;
                 $.each(question.answers, function() {
-                    answers += atn.dom.response.replace(/{{id}}/gi, index).replace(/{{response}}/gi, this).replace(/{{index}}/gi, index);
+                    answers += atn.dom.response.replace(/{{id}}/gi, question.id).replace(/{{response}}/gi, this).replace(/{{index}}/gi, index);
                     index++;
                 });
                 html = atn.dom.header.replace(/{{question}}/gi, question.question) + "\n" + answers;
@@ -68,7 +66,6 @@ var submitQuestion = function() {
         question = $("#question-input").val();
 
     if (name != "" && question != "") {
-
         questionsRef.push({
             name: name,
             text: question
@@ -76,7 +73,6 @@ var submitQuestion = function() {
 
         $("#question-input").val("");
         $("#question-status").text("Your question has been submitted to the presenter.");
-
     } else {
         $("#question-status").text("Please enter your name and question.");
     }
@@ -94,14 +90,12 @@ var submitResponse = function(selector) {
     $(".response-input").attr("disabled", "disabled");
 };
 
-
-
 $(function() {
-    slideRef.on('child_added', function(rec) {
+    slideRef.on("child_added", function(rec) {
         var slide = rec.val();
         if (slide.id == "blank") {
             displayBlankSlide();
-        } else if (slide.id == 'qa') {
+        } else if (slide.id == "qa") {
             displayQASlide();
         } else {
             displayQuestionSlide(slide);
