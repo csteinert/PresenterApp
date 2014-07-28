@@ -1,0 +1,16 @@
+[{
+    "id": 1,
+    "question": "Have you used X before?",
+    "answers": [
+        "yes",
+        "no"
+    ]
+}, {
+    "id": 2,
+    "question": "What is your profession?",
+    "answers": [
+        "Designer",
+        "Deveoper",
+        "etc"
+    ]
+}]

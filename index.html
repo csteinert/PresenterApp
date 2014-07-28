@@ -1,9 +1,11 @@
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-        <script src="Presenter.js"></script>
-        <link rel="stylesheet" href="Main.css">
+        <!--<link rel="stylesheet" href="assets/styles/Main.css" />-->
+        <link rel="stylesheet" href="assets/styles/styles.css" />
         <title>Presenter View</title>
     </head>
     <body>
@@ -13,7 +15,9 @@
             <button id='slide_qa' class="slide-button" data-id="qa">Q & A</button>
         </section>
         <section id="section-questions">
-            <h2>Questions</h2>
+            <h2>
+                Questions
+            </h2>
 			<button id="resetButton">Reset All</button>
         </section>
         <section id="section-questions-answers">
@@ -22,5 +26,8 @@
             <!--<input type='text' id='nameInput' placeholder='Name'>
             <input type='text' id='messageInput' placeholder='Message'>-->
         </section>
+
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+        <script src="assets/js/presenter.js"></script>
     </body>
 </html>
