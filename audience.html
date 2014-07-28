@@ -11,11 +11,17 @@
             <div id="section-slide" class="container__wrap"></div>
             <br /><br />
             <div id="section-ask-quesiton" class="container__wrap">
-                <a id="button-ask-quesiton">Ask the presenter a question</a>
+                <button id="button-ask-quesiton" class="poll--question__button">Ask the presenter a question</button>
                 <article id="section-question-form" class="container__wrap" hidden>
-                    <input id="name-input" type="text" placeholder="Name">
-                    <input id="question-input" type="text" placeholder="Question">
-                    <input id="submit-question-button" type="button" value="Submit Question">
+                    <form class="poll--question">
+                        <fieldset>
+                            <input id="name-input" class="input" type="text" placeholder="Enter your name" />
+                        </fieldset>
+                        <fieldset>
+                            <textarea rows="5" id="question-input" class="textarea" type="text" autocomplete="off" placeholder="Ask away here..."></textarea>
+                        </fieldset>
+                        <input id="submit-question-button" type="button" class="poll--question__button" value="Submit">
+                    </form>
                     <span id="question-status"></span>
                 </article>
             </div>
