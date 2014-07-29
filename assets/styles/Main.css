@@ -39,6 +39,10 @@ p {
 	padding: 20px;
 }
 
+ol li {
+	color: #ccc;
+}
+
 section {
 	width: 33%;
 	float: left;
@@ -92,4 +96,8 @@ article {
 	-o-transform: rotate(-45deg);
 	/* Internet Explorer */
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+.answer-count {
+	color: #fff;
 }

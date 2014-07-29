@@ -60,7 +60,7 @@ function selectSlide(selector) {
 function questionTemplate(question) {
     var answers = "";
     $.each(question.answers, function(index) {
-        answers += "<li>" + this + "   <span id='" + question.id + "_" + index + "' class='right-justify'>0</span>" + "</li>"
+        answers += "<li>" + this + "   <span id='" + question.id + "_" + index + "' class='answer-count'>0</span>" + "</li>"
     });
     return "<article>" +
         "<h3>" + question.question + "</h3>" +
