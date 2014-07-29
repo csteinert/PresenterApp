@@ -18,7 +18,8 @@
 .title--display-results {
 	@extend %title-base;
 	color: #FFF;
-	padding: .25rem 0 1rem;
+	padding: .25rem 0 .5rem;
+	font-size: 1rem;
 }
 
 /*
@@ -82,10 +83,11 @@
 }
 
 .poll--display-results__result-title {
-	padding-top: .5rem;
+	padding-top: .2rem;
 	vertical-align: top;
 	color: $aqua;
-	font-size: 1rem;
+	font-size: .5rem;
+	line-height: 1rem;
 }
 
 .poll--display-results__result__bar {
