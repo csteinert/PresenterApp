@@ -17,8 +17,8 @@ atn.dom.totals = '<div class="poll--display-results__items__item"> <div class="p
 
 
 var displayBlankSlide = function() {
-    $("#section-slide").html(
-        "<div>Test</div>"
+    $("#results").html(
+        "<div id='blank-slide'></div>"
         );
 };
 
