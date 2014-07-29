@@ -5,6 +5,7 @@ var w = window,
     e = d.documentElement,
     b = d.getElementsByTagName("body")[0],
     atn = w.atn = {},
+    responses = [],
     connectionString = "https://atndemo1.firebaseio.com/",
     slideRef = new Firebase(connectionString + "SelectedSlide/"),
     questionsRef = new Firebase(connectionString + "AudienceQuestions/"),
@@ -37,10 +38,21 @@ var displayQuestionSlide = function(slide) {
         });
 
         $section.html(html);
-        $("#submit-response-button").click(submitResponse);
-        $(".response-input").click(function() {
-            $("#submit-response-button").removeAttr("disabled");
-        });
+
+        var response = getPreviousResponse(slide.id);
+        if (response == null) {
+            $("#submit-response-button").click(submitResponse);
+            $(".response-input").click(function() {
+                $("#submit-response-button").removeAttr("disabled");
+            });
+        }
+        else {
+            var responseId = "#response_" + response.questionId + "_" + response.answerIndex;
+            $(responseId).attr("checked", "checked");
+            $(".response-input").attr("disabled", "disabled");
+            $("#submit-response-button").hide();
+            $("#response-status").text("You have already submitted a response for this question.");
+        }
     });
 };
 
@@ -64,18 +76,29 @@ var submitQuestion = function() {
 };
 
 var submitResponse = function () {
-    var selector = $(".response-input:checked");
-    var id = selector.data("id"),
-        index = selector.data("index");
+    var selector = $(".response-input:checked"),
+        id = selector.data("id"),
+        index = selector.data("index"),
+        response = {
+            questionId: id,
+            answerIndex: index
+        };
 
-    responsesRef.push({
-        questionId: id,
-        answerIndex: index
-    });
+    responsesRef.push(response);
+    responses.push(response);
 
     $(".response-input").attr("disabled", "disabled");
     $("#submit-response-button").hide();
     $("#response-status").text("Your response has been submitted to the presenter.");
+};
+
+var getPreviousResponse = function (questionId) {
+    for (var i = 0; i < responses.length; i++) {
+        if (responses[i].questionId == questionId) {
+            return responses[i];
+        }
+    }
+    return null;
 };
 
 $(function() {
