@@ -12,8 +12,8 @@ var w = window,
     $section = $("#section-slide");
 
 atn.dom = {};
-atn.dom.header = "<h2 class='title--results'><span class='title__question'>{{question}}</span></h2>";
-atn.dom.response = "<fieldset class='poll--question__fieldset'><input class='response-input poll--question__radio' id='response_{{id}}_{{index}}' data-id='{{id}}' data-index='{{index}}' value='{{id}}' ame='response' type='radio' /><label class='poll--question__label' for='response_{{id}}_{{index}}'>{{response}}</label></fieldset>";
+atn.dom.header = "<h2 class='title--results'><span class='title__question'>{{question}}</span></h2>\n{{answers}}\n<button id='submit-response-button' class='poll--question__button' disabled>Submit</button><span id='response-status'></span>";
+atn.dom.response = "<fieldset class='poll--question__fieldset'><input class='response-input poll--question__radio' id='response_{{id}}_{{index}}' data-id='{{id}}' data-index='{{index}}' value='{{id}}' name='response' type='radio' /><label class='poll--question__label' for='response_{{id}}_{{index}}'>{{response}}</label></fieldset>";
 atn.dom.blank = '<div class="container--full padding-top padding-bottom--2x"> <div class="container__wrap"> <h2 class="title--results"> <span class="title__question"> Hey you! </span> </h2> <p class="reset--p"> There\'s more to come on here... just wait :) <br />- <a href="twitter.com/nicetransition" target="_blank">@nicetransition</a> </p> <p> Here\'s a good opportunity to join the <a href="http://www.meetup.com/Columbus-Web-Group/" target="_blank">Columbus Web Group</a>. </p> </div> </div> ';
 
 var displayBlankSlide = function() {
@@ -36,13 +36,14 @@ var displayQuestionSlide = function(slide) {
                     answers += atn.dom.response.replace(/{{id}}/gi, question.id).replace(/{{response}}/gi, this).replace(/{{index}}/gi, index);
                     index++;
                 });
-                html = atn.dom.header.replace(/{{question}}/gi, question.question) + "\n" + answers;
+                html = atn.dom.header.replace(/{{question}}/gi, question.question).replace(/{{answers}}/gi, answers);
             }
         });
 
         $section.html(html);
+        $("#submit-response-button").click(submitResponse);
         $(".response-input").click(function() {
-            submitResponse($(this));
+            $("#submit-response-button").removeAttr("disabled");
         });
     });
 };
@@ -66,7 +67,8 @@ var submitQuestion = function() {
     }
 };
 
-var submitResponse = function(selector) {
+var submitResponse = function () {
+    var selector = $(".response-input:checked");
     var id = selector.data("id"),
         index = selector.data("index");
 
@@ -76,6 +78,8 @@ var submitResponse = function(selector) {
     });
 
     $(".response-input").attr("disabled", "disabled");
+    $("#submit-response-button").hide();
+    $("#response-status").text("Your response has been submitted to the presenter.");
 };
 
 $(function() {
