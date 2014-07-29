@@ -48,6 +48,7 @@ section {
 	float: left;
 	height: 100%;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 	section + section {
