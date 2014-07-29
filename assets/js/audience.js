@@ -59,8 +59,8 @@ var submitQuestion = function() {
 
         $("#question-input").val("");
         $("#question-status").text("Your question has been submitted to the presenter.");
-        $("#section-question-form").hide();
-        $("#button-ask-quesiton").togle();
+        $("#section-question-form").parent().hide();
+        $("#section-ask-quesiton").toggle();
     } else {
         alert("Please enter your name and question.");
     }
@@ -93,7 +93,7 @@ $(function() {
     $("#button-ask-quesiton").click(function() {
         window.scrollTo(0, 0);
         $("#section-question-form").parent().toggle();
-        $("#button-ask-quesiton").toggle();
+        $("#section-ask-quesiton").toggle();
     });
 
     $("#submit-question-button").click(submitQuestion);
