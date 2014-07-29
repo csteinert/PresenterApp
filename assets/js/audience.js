@@ -88,8 +88,8 @@ $(function() {
         }
     });
 
-    $("#button-ask-quesiton").click(function() {
-        window.scrollTo(0, 0);
+    $("#button-ask-quesiton, #cancel-button").click(function () {
+        w.scrollTo(0, 0);
         $("#section-question-form").parent().toggle();
         $("#section-ask-quesiton").toggle();
     });
