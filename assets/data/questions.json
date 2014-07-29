@@ -1,16 +1,23 @@
 [{
     "id": 1,
-    "question": "Have you used X before?",
+    "question": "Have you heard of Contextual Design?",
     "answers": [
-        "yes",
-        "no"
+        "Yes",
+        "No"
     ]
 }, {
     "id": 2,
     "question": "What is your profession?",
     "answers": [
         "Designer",
-        "Deveoper",
-        "etc"
+        "Developer",
+        "Other"
+    ]
+}, {
+    "id": 3,
+    "question": "Is Kevin Mack super cool?",
+    "answers": [
+        "Yes",
+        "YES!!!"
     ]
 }]

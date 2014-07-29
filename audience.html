@@ -7,23 +7,32 @@
         <title>Audience View</title>
     </head>
     <body>
+
+
+        <div class="container--full padding-top padding-bottom--2x margin-bottom--2x" hidden>
+            <div  class="container__wrap padding-bottom--2x" id="section-question-form">
+                <h2 class="title--results">
+                    <span class="title__question">
+                        What's your question?
+                    </span>
+                </h2>
+                <form class="poll--question">
+                    <fieldset>
+                        <input id="name-input" class="input" type="text" placeholder="Enter your name" />
+                    </fieldset>
+                    <fieldset>
+                        <textarea rows="5" id="question-input" class="textarea" type="text" autocomplete="off" placeholder="Ask away here..."></textarea>
+                    </fieldset>
+                    <input id="submit-question-button" type="button" class="poll--question__button" value="Submit">
+                </form>
+                <span id="question-status"></span>
+            </div>
+        </div>
+
         <div class="container--full padding-top padding-bottom--2x">
             <div id="section-slide" class="container__wrap"></div>
-            <br /><br />
             <div id="section-ask-quesiton" class="container__wrap">
-                <button id="button-ask-quesiton" class="poll--question__button">Ask the presenter a question</button>
-                <article id="section-question-form" class="container__wrap" hidden>
-                    <form class="poll--question">
-                        <fieldset>
-                            <input id="name-input" class="input" type="text" placeholder="Enter your name" />
-                        </fieldset>
-                        <fieldset>
-                            <textarea rows="5" id="question-input" class="textarea" type="text" autocomplete="off" placeholder="Ask away here..."></textarea>
-                        </fieldset>
-                        <input id="submit-question-button" type="button" class="poll--question__button" value="Submit">
-                    </form>
-                    <span id="question-status"></span>
-                </article>
+                <button id="button-ask-quesiton" class="poll--question__button">Ask a question</button>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>

@@ -120,7 +120,7 @@
 
 .poll--question__button {
 	@extend %poll-animations;
-	@extend %margin-top--2x;
+	@extend %margin-top;
 	@extend %padding;
 	@extend .upper;
 	
