@@ -111,11 +111,15 @@ var loadResponses = function() {
 
 var makePercent = function(num, total) {
 
-    total = total || atn.dom.total;
+    total = total || $("#response-count").text();
     num = parseInt(num);
     console.log(num + " / " + atn.dom.total);
 
-    return Math.round((num / parseInt(total)) * 100) + "%";
+    if ( total > 0) {
+        return Math.round((num / parseInt(total)) * 100) + "%"; 
+    } else {
+        return "0%";
+    }
 };
 
 var calculateResults = function() {
