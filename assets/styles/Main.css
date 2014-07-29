@@ -43,7 +43,7 @@ section {
 	width: 33%;
 	float: left;
 	height: 100%;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 	section + section {
