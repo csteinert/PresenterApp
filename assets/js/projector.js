@@ -17,7 +17,9 @@ atn.dom.totals = '<div class="poll--display-results__items__item"> <div class="p
 
 
 var displayBlankSlide = function() {
-    $("#section-slide").html("");
+    $("#section-slide").html(
+        "<div>Test</div>"
+        );
 };
 
 var displayQASlide = function() {
@@ -137,8 +139,6 @@ $(function() {
         var slide = rec.val();
         if (slide.id == "blank") {
             displayBlankSlide();
-        } else if (slide.id == "qa") {
-            displayQASlide();
         } else {
             displayQuestionSlide(slide);
         }

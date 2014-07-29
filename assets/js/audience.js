@@ -20,10 +20,6 @@ var displayBlankSlide = function() {
     $section.html(atn.dom.blank);
 };
 
-var displayQASlide = function() {
-    $section.html("<article><h3>Q & A</h3></article>");
-};
-
 var displayQuestionSlide = function(slide) {
     $.getJSON("assets/data/questions.json", function(json) {
         var html = "[Error: Slide not found]";
@@ -87,8 +83,6 @@ $(function() {
         var slide = rec.val();
         if (slide.id == "blank") {
             displayBlankSlide();
-        } else if (slide.id == "qa") {
-            displayQASlide();
         } else {
             displayQuestionSlide(slide);
         }
